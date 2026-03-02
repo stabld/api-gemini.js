@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     try {
         const { parts, systemPrompt, useJson } = req.body;
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
         // Správný formát pro Gemini API
         const formattedParts = parts.map(p => {
