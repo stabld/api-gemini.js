@@ -11,42 +11,44 @@ export default async function handler(req, res) {
     try {
         const { parts, systemPrompt, useJson } = req.body;
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+        const userText = parts.map(p => {
+            if (typeof p === 'string') return p;
+            if (p.text) return p.text;
+            return '';
+        }).filter(Boolean).join('\n');
 
-        // Správný formát pro Gemini API
-        const formattedParts = parts.map(p => {
-            if (typeof p === 'string') return { text: p };
-            if (p.text) return { text: p.text };
-            if (p.inlineData) return { inlineData: p.inlineData };
-            return p;
-        });
+        const messages = [];
+        if (systemPrompt) messages.push({ role: 'system', content: systemPrompt });
+        messages.push({ role: 'user', content: userText });
 
         const payload = {
-            contents: [{ role: "user", parts: formattedParts }],
-            systemInstruction: { parts: [{ text: systemPrompt }] }
+            model: 'llama-3.3-70b-versatile',
+            messages,
+            max_tokens: 1024,
         };
 
         if (useJson) {
-            payload.generationConfig = { responseMimeType: "application/json" };
+            payload.response_format = { type: 'json_object' };
         }
 
-        const response = await fetch(url, {
+        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
             body: JSON.stringify(payload)
         });
 
         const data = await response.json();
 
         if (!response.ok) {
-            return res.status(response.status).json({ error: data.error?.message || 'Chyba od Google API' });
+            return res.status(response.status).json({ error: data.error?.message || 'Chyba od Groq API' });
         }
 
-        return res.status(200).json({ text: data.candidates[0].content.parts[0].text });
+        return res.status(200).json({ text: data.choices[0].message.content });
 
     } catch (err) {
         return res.status(500).json({ error: err.message });
     }
 }
-
-
