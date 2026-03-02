@@ -1,12 +1,9 @@
 export default async function handler(req, res) {
-    // Povolíme jen POST
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Metoda není povolena' });
     }
 
-    // API klíč čteme z Vercel Environment Variables (NIKDY ho nedávej do kódu!)
     const apiKey = process.env.GEMINI_API_KEY;
-
     if (!apiKey) {
         return res.status(500).json({ error: 'GEMINI_API_KEY není nastaven na serveru.' });
     }
@@ -16,8 +13,16 @@ export default async function handler(req, res) {
 
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
+        // Správný formát pro Gemini API
+        const formattedParts = parts.map(p => {
+            if (typeof p === 'string') return { text: p };
+            if (p.text) return { text: p.text };
+            if (p.inlineData) return { inlineData: p.inlineData };
+            return p;
+        });
+
         const payload = {
-            contents: parts,
+            contents: [{ role: "user", parts: formattedParts }],
             systemInstruction: { parts: [{ text: systemPrompt }] }
         };
 
@@ -43,3 +48,5 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: err.message });
     }
 }
+
+
