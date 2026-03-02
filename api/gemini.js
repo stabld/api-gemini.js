@@ -1,8 +1,10 @@
 export default async function handler(req, res) {
+    // Povolíme jen POST
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Metoda není povolena' });
     }
 
+    // API klíč čteme z Vercel Environment Variables (NIKDY ho nedávej do kódu!)
     const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
@@ -15,7 +17,7 @@ export default async function handler(req, res) {
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
         const payload = {
-            contents: [{ role: "user", parts }],
+            contents: parts,
             systemInstruction: { parts: [{ text: systemPrompt }] }
         };
 
