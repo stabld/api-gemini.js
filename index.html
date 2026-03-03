@@ -291,30 +291,80 @@
         </div>
     </section>
 
-    <footer id="kontakt" class="bg-fixit-dark text-white pt-24 pb-12 border-t border-white/5">
+    <footer id="kontakt" class="bg-fixit-dark text-white pt-20 pb-10 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex items-center gap-4 mb-12">
-                <svg width="48" height="48" viewBox="0 0 100 100" fill="none">
-                    <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" fill="#f59e0b"/>
-                    <circle cx="50" cy="48" r="16" fill="white"/>
-                    <path d="M40 58 L30 68 L45 64 Z" fill="white"/>
-                </svg>
-                <span class="font-extrabold text-4xl tracking-tighter">Fixit Brno</span>
-            </div>
-            <div class="grid lg:grid-cols-2 gap-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div>
-                    <h2 class="text-5xl lg:text-6xl font-extrabold mb-8 leading-tight">Vidíme se<br> v Brně.</h2>
-                    <a href="mailto:fixitcz@seznam.cz" class="text-xl lg:text-2xl font-bold text-white hover:text-fixit-500 transition block">fixitcz@seznam.cz</a>
-                    <a href="tel:+420732573644" class="text-xl lg:text-2xl font-bold text-white hover:text-fixit-500 transition block mt-4">+420 732 573 644</a>
+                    <div class="flex items-center gap-3 mb-5">
+                        <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
+                            <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" fill="#f59e0b"/>
+                            <circle cx="50" cy="48" r="16" fill="white"/>
+                            <path d="M40 58 L30 68 L45 64 Z" fill="white"/>
+                        </svg>
+                        <span class="font-extrabold text-2xl tracking-tighter">Fixit</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Propojujeme brněnské domácnosti s ověřenými řemeslníky. Bezpečně, rychle, digitálně.</p>
+                    <div class="space-y-2 text-sm">
+                        <a href="mailto:fixitcz@seznam.cz" class="flex items-center gap-2 text-slate-400 hover:text-fixit-500 transition">
+                            <i class="fa-solid fa-envelope text-fixit-500 w-4"></i> fixitcz@seznam.cz
+                        </a>
+                        <a href="tel:+420732573644" class="flex items-center gap-2 text-slate-400 hover:text-fixit-500 transition">
+                            <i class="fa-solid fa-phone text-fixit-500 w-4"></i> +420 732 573 644
+                        </a>
+                        <div class="flex items-center gap-2 text-slate-400">
+                            <i class="fa-solid fa-location-dot text-fixit-500 w-4"></i> Brno, Czech Republic
+                        </div>
+                    </div>
                 </div>
+
                 <div>
-                    <p class="text-slate-400 mb-8 leading-loose text-xl">Sledujte Bořkův progres a zákulisí vývoje platformy na našem Instagramu.</p>
-                    <a href="https://instagram.com/fixitcz" target="_blank" class="inline-flex items-center gap-4 bg-white text-fixit-dark px-10 py-5 rounded-full font-extrabold transition-transform duration-300 hover:scale-105 text-lg">
-                        <i class="fa-brands fa-instagram text-3xl"></i> @fixitcz
-                    </a>
+                    <h4 class="font-extrabold text-white mb-5 uppercase tracking-widest text-xs">Zákazníci</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#hero" class="text-slate-400 hover:text-fixit-500 transition">O nás</a></li>
+                        <li><a href="#jak-to-funguje" class="text-slate-400 hover:text-fixit-500 transition">Jak to funguje</a></li>
+                        <li><a href="#ai-poptavka" class="text-slate-400 hover:text-fixit-500 transition">Tvorba poptávky</a></li>
+                        <li><a href="#faq" class="text-slate-400 hover:text-fixit-500 transition">FAQ</a></li>
+                        <li><a href="#newsletter" class="text-slate-400 hover:text-fixit-500 transition">Získat přístup</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-extrabold text-white mb-5 uppercase tracking-widest text-xs">Řemeslníci</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#pro-remeslniky" class="text-slate-400 hover:text-fixit-500 transition">Procházet poptávky</a></li>
+                        <li><a href="#clenstvi" class="text-slate-400 hover:text-fixit-500 transition">Členství</a></li>
+                        <li><a href="#statistiky" class="text-slate-400 hover:text-fixit-500 transition">Statistiky</a></li>
+                        <li><button onclick="openRegistraceModal('Zkušební')" class="text-slate-400 hover:text-fixit-500 transition text-left">Registrace</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-extrabold text-white mb-5 uppercase tracking-widest text-xs">Právní</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><button onclick="openModal('modal-podminky')" class="text-slate-400 hover:text-fixit-500 transition text-left">Podmínky použití</button></li>
+                        <li><button onclick="openModal('modal-gdpr')" class="text-slate-400 hover:text-fixit-500 transition text-left">Ochrana osobních údajů</button></li>
+                        <li><button onclick="openModal('modal-gdpr')" class="text-slate-400 hover:text-fixit-500 transition text-left">Cookies</button></li>
+                        <li><button onclick="openModal('modal-gdpr')" class="text-slate-400 hover:text-fixit-500 transition text-left">GDPR</button></li>
+                    </ul>
+                    <div class="flex items-center gap-4 mt-8">
+                        <a href="https://instagram.com/fixitcz" target="_blank" class="w-10 h-10 bg-white/10 hover:bg-fixit-500 rounded-xl flex items-center justify-center transition-all hover:scale-110">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/fixitcz" target="_blank" class="w-10 h-10 bg-white/10 hover:bg-fixit-500 rounded-xl flex items-center justify-center transition-all hover:scale-110">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <p class="mt-24 text-slate-500 text-lg italic leading-loose">© 2026 Fixit Brno. Startujeme v květnu 2026.</p>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-slate-500 text-sm">© 2026 Fixit Brno. Startujeme v květnu 2026.</p>
+                <div class="flex items-center gap-4 text-slate-500 text-sm">
+                    <button onclick="openModal('modal-podminky')" class="hover:text-fixit-500 transition">Podmínky</button>
+                    <span>·</span>
+                    <button onclick="openModal('modal-gdpr')" class="hover:text-fixit-500 transition">Soukromí</button>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -350,18 +400,29 @@
     </div>
 
     <script type="module">
-
-        // ============================================================
-        // API klíč JE NA SERVERU – viz /api/gemini.js + Vercel ENV vars
-        // Zde klíč NENÍ a být NESMÍ!
-        // ============================================================
-
         window.toggleChat = function() {
             document.getElementById('chat-widget').classList.toggle('open');
         }
 
-        // Bezpečné volání přes náš serverless endpoint
+        // --- PŘEPOJENO NA TVŮJ VERCEL BACKEND ---
         async function callGeminiAPI(parts, systemPrompt, useJson = false) {
+            const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' || window.location.protocol === 'file:';
+            
+            // Lokální režim (když to otevřeš jen z plochy jako HTML)
+            if (isLocal) {
+                await new Promise(r => setTimeout(r, 1500));
+                if (useJson) {
+                    if (parts.length <= 1) {
+                        return JSON.stringify({ status: "question", message: "Ahoj! Web funguje v lokálním testovacím režimu. Zkus mi odpovědět a otestujeme chat!" });
+                    } else {
+                        return JSON.stringify({ status: "done", nazev: "Testovací poptávka", kategorie: "UKÁZKA FUNKČNOSTI", popis: "- Web funguje přesně jak má.", nalehavost: "Nízká", odhad_ceny: "0 Kč", rada: "Tohle je vizuální ukázka rychlé rady." });
+                    }
+                } else {
+                    return "Tohle je automatická odpověď. Až nahraješ web online, probudím se k životu.";
+                }
+            }
+
+            // Ostrý režim - voláme /api/gemini z Vercelu
             const response = await fetch('/api/gemini', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -402,14 +463,14 @@
 
             try {
                 const responseText = await callGeminiAPI(
-                    [{ role: "user", parts: [{ text }] }],
+                    [{ text: text }], 
                     systemPrompt,
                     false
                 );
                 appendMessage('borek', responseText.replace(/[\*✨⭐]/g, '').trim());
             } catch (e) {
                 console.error("Chyba v chatu:", e);
-                appendMessage('borek', `⚠️ Chyba: ${e.message}`);
+                appendMessage('borek', `⚠️ Jejda, něco se pokazilo: ${e.message}`);
             }
         });
 
