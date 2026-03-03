@@ -33,3 +33,22 @@ export default async function handler(req, res) {
 
         const response = await fetch('https://models.inference.ai.azure.com/chat/completions', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            return res.status(response.status).json({ error: data.error?.message || 'Chyba od API' });
+        }
+
+        return res.status(200).json({ text: data.choices[0].message.content });
+
+    } catch (err) {
+        return res.status(500).json({ error: err.message });
+    }
+}
