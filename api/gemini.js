@@ -11,42 +11,35 @@ export default async function handler(req, res) {
     try {
         const { parts, systemPrompt, useJson } = req.body;
 
-        const userText = parts.map(p => {
-            if (typeof p === 'string') return p;
-            if (p.text) return p.text;
-            return '';
-        }).filter(Boolean).join('\n');
-
-        const messages = [];
-        if (systemPrompt) messages.push({ role: 'system', content: systemPrompt });
-        messages.push({ role: 'user', content: userText });
+        const formattedParts = parts.map(p => {
+            if (typeof p === 'string') return { text: p };
+            if (p.text) return { text: p.text };
+            if (p.inlineData) return { inlineData: p.inlineData };
+            return p;
+        });
 
         const payload = {
-            model: 'llama-3.3-70b-versatile',
-            messages,
-            max_tokens: 1024,
+            contents: [{ role: "user", parts: formattedParts }],
+            systemInstruction: { parts: [{ text: systemPrompt }] }
         };
 
         if (useJson) {
-            payload.response_format = { type: 'json_object' };
+            payload.generationConfig = { responseMimeType: "application/json" };
         }
 
-        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
 
         const data = await response.json();
 
         if (!response.ok) {
-            return res.status(response.status).json({ error: data.error?.message || 'Chyba od Groq API' });
+            return res.status(response.status).json({ error: data.error?.message || 'Chyba od Google API' });
         }
 
-        return res.status(200).json({ text: data.choices[0].message.content });
+        return res.status(200).json({ text: data.candidates[0].content.parts[0].text });
 
     } catch (err) {
         return res.status(500).json({ error: err.message });
