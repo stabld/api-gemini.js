@@ -246,7 +246,7 @@
         <div class="max-w-4xl mx-auto px-4 text-center">
             <div class="bg-white dark:bg-slate-800 p-8 md:p-16 rounded-[3rem] border border-slate-200 dark:border-slate-700 shadow-xl">
                 <h2 class="text-3xl md:text-5xl font-extrabold mb-8 dark:text-white">Získejte přístup v Brně dříve</h2>
-                <p class="text-slate-600 dark:text-slate-400 text-xl mb-12 max-w-xl mx-auto leading-loose">Zanechte nám svůj e-mail a my vás budeme informovat, jakmile v květnu 2026 spustíme brněnský provoz.</p>
+                <p class="text-slate-600 dark:text-slate-400 text-xl mb-12 max-w-xl mx-auto leading-loose">Zanechte nám svůj e-mail a my vás budeme informovat, jakmile v květnu 2026 spustíme brněnský provoz. O nic nepřijdete!</p>
                 <div id="newsletter-area">
                     <form id="contact-form" action="https://formspree.io/f/mojnzkbe" method="POST" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
                         <input type="email" name="email" id="newsletter-email" required placeholder="Váš e-mail" class="flex-grow pl-8 pr-6 py-5 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-fixit-dark dark:text-white focus:ring-2 focus:ring-fixit-500 outline-none transition text-lg">
@@ -280,7 +280,7 @@
                 </div>
                 <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition hover:shadow-md">
                     <h3 class="text-2xl font-bold mb-4 dark:text-white">Kolik mě bude platforma stát?</h3>
-                    <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Vytvoření poptávky a získání nabídek je pro zákazníky zcela zdarma. Z každé úspěšně dokončené zakázky si platforma účtuje servisní poplatek ve výši 10 % z dohodnuté ceny opravy (za bezpečné zprostředkování a úschovu peněz). Řemeslníci z jednotlivých zakázek žádné provize neplatí, za přístup k platformě hradí pouze fixní měsíční předplatné.</p>
+                    <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Vytvoření poptávky a získání nabídek je zcela zdarma. Z každé úspěšně dokončené zakázky si platforma účtuje servisní poplatek ve výši 10 % z dohodnuté ceny opravy. Řemeslníci z jednotlivých zakázek provize neplatí, za přístup k platformě hradí pouze fixní měsíční předplatné.</p>
                 </div>
                 <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition hover:shadow-md">
                     <h3 class="text-2xl font-bold mb-4 dark:text-white">Co když se oprava nepovede?</h3>
@@ -337,11 +337,11 @@
 
                 <div>
                     <h4 class="font-extrabold text-white mb-5 uppercase tracking-widest text-xs">Řemeslníci</h4>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="#pro-remeslniky" class="text-slate-400 hover:text-fixit-500 transition">Procházet poptávky</a></li>
-                        <li><a href="#clenstvi" class="text-slate-400 hover:text-fixit-500 transition">Členství</a></li>
-                        <li><a href="#statistiky" class="text-slate-400 hover:text-fixit-500 transition">Statistiky</a></li>
-                        <li><button onclick="window.openRegistraceModal()" class="text-slate-400 hover:text-fixit-500 transition text-left">Registrace</button></li>
+                    <ul class="space-y-3 text-sm flex flex-col items-start">
+                        <li><button onclick="openModal('modal-chystame')" class="text-slate-400 hover:text-fixit-500 transition text-left">Procházet poptávky</button></li>
+                        <li><button onclick="openModal('modal-chystame')" class="text-slate-400 hover:text-fixit-500 transition text-left">Členství</button></li>
+                        <li><button onclick="openModal('modal-chystame')" class="text-slate-400 hover:text-fixit-500 transition text-left">Statistiky</button></li>
+                        <li><button onclick="openModal('modal-chystame')" class="text-slate-400 hover:text-fixit-500 transition text-left">Registrace</button></li>
                     </ul>
                 </div>
 
@@ -374,6 +374,24 @@
             </div>
         </div>
     </footer>
+
+    <div id="modal-chystame" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal-box text-center">
+            <button onclick="closeModal('modal-chystame')" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300 transition">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <div class="w-24 h-24 bg-fixit-50 dark:bg-fixit-500/20 text-fixit-500 rounded-full flex items-center justify-center text-4xl mx-auto mb-6">
+                <i class="fa-solid fa-person-digging"></i>
+            </div>
+            <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">Tohle pro vás teprve chystáme! 🚧</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-loose text-lg mb-8">
+                Sekci pro řemeslníky aktuálně ladíme k dokonalosti. Plný přístup, registrace profilů a procházení reálných zakázek spustíme už brzy. Zadejte svůj e-mail nahoře na webu a dáme vám vědět jako prvním!
+            </p>
+            <button onclick="closeModal('modal-chystame'); window.location.hash = 'newsletter';" class="bg-fixit-500 hover:bg-fixit-600 text-white px-8 py-4 rounded-xl font-bold transition hover:scale-105 shadow-lg">
+                Chci vědět o spuštění
+            </button>
+        </div>
+    </div>
 
     <div id="modal-podminky" class="modal-overlay" role="dialog" aria-modal="true">
         <div class="modal-box">
@@ -493,11 +511,6 @@
                 el.classList.remove('open'); 
                 document.body.style.overflow = ''; 
             }
-        };
-
-        // Aby tlačítko registrace neházelo chybu, hodí tě na newsletter
-        window.openRegistraceModal = function() {
-            window.location.hash = 'newsletter';
         };
 
         document.addEventListener('keydown', (e) => {
