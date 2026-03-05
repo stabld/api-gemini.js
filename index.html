@@ -246,6 +246,14 @@
         <div class="max-w-4xl mx-auto px-4 text-center">
             <div class="bg-white dark:bg-slate-800 p-8 md:p-16 rounded-[3rem] border border-slate-200 dark:border-slate-700 shadow-xl">
                 <h2 class="text-3xl md:text-5xl font-extrabold mb-8 dark:text-white">Získejte přístup v Brně dříve</h2>
+                <div id="subscriber-count" class="inline-flex items-center gap-3 bg-fixit-50 dark:bg-fixit-500/10 border border-fixit-500/30 px-6 py-3 rounded-full mb-8">
+    <div class="flex -space-x-2">
+        <div class="w-8 h-8 rounded-full bg-fixit-500 flex items-center justify-center text-white text-xs font-bold">J</div>
+        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs font-bold">M</div>
+        <div class="w-8 h-8 rounded-full bg-fixit-600 flex items-center justify-center text-white text-xs font-bold">P</div>
+    </div>
+    <p class="text-slate-700 dark:text-slate-300 font-bold text-sm">Už <span id="count-number" class="text-fixit-500 text-lg">...</span> lidí čeká na přístup</p>
+</div>
                 <p class="text-slate-600 dark:text-slate-400 text-xl mb-12 max-w-xl mx-auto leading-loose">Zanechte nám svůj e-mail a my vás budeme informovat, jakmile v květnu 2026 spustíme brněnský provoz. O nic nepřijdete!</p>
                 <div id="newsletter-area">
                     <div class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
@@ -798,6 +806,16 @@ Pokud máš vše: {"status": "done", "nazev": "titulek", "kategorie": "obor", "p
         document.getElementById('newsletter-email').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') { e.preventDefault(); newsletterBtn.click(); }
         });
+        // --- POČÍTADLO ---
+async function loadCount() {
+    try {
+        const res = await fetch('/api/count');
+        const data = await res.json();
+        const el = document.getElementById('count-number');
+        if (el) el.innerText = data.count;
+    } catch (e) {}
+}
+loadCount();
 
         // --- SCROLLSPY ---
         const sections = document.querySelectorAll('section[id], footer[id]');
