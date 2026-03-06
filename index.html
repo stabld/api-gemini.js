@@ -395,13 +395,20 @@
                             <span id="pop-nalehavost" class="bg-red-100 text-red-600 dark:bg-red-500/20 dark:text-red-400 px-4 py-2 rounded-full font-bold text-sm uppercase tracking-widest">Naléhavost</span>
                             <span id="pop-cena" class="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 px-4 py-2 rounded-full font-bold text-sm uppercase tracking-widest border border-slate-200 dark:border-slate-700">Cena</span>
                         </div>
-                        <h4 id="pop-nazev" class="text-3xl font-extrabold mb-6 text-slate-900 dark:text-white">...</h4>
+                        
+                        <h4 id="pop-nazev" contenteditable="true" spellcheck="false" class="text-3xl font-extrabold mb-4 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800/50 focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-fixit-500 rounded-xl px-4 py-2 -mx-4 transition-all cursor-text border border-transparent hover:border-slate-200 dark:hover:border-slate-700">...</h4>
+                        
                         <h5 class="font-bold text-lg text-slate-500 dark:text-slate-400 mb-3 uppercase tracking-widest">Detailní popis pro řemeslníka</h5>
-                        <p id="pop-popis" class="text-lg text-slate-700 dark:text-slate-300 leading-loose whitespace-pre-line">...</p>
+                        
+                        <p id="pop-popis" contenteditable="true" spellcheck="false" class="text-lg text-slate-700 dark:text-slate-300 leading-loose whitespace-pre-line hover:bg-slate-100 dark:hover:bg-slate-800/50 focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-fixit-500 rounded-xl px-4 py-3 -mx-4 transition-all cursor-text border border-transparent hover:border-slate-200 dark:hover:border-slate-700">...</p>
+                        
                         <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-700 text-center flex flex-col items-center gap-6">
-                            <p class="text-slate-500 dark:text-slate-400 italic">Díky jasným detailům dostanete ty nejlepší nabídky bez zbytečného dohadování.</p>
+                            <div>
+                                <p class="text-fixit-600 dark:text-fixit-400 font-bold text-sm mb-2"><i class="fa-solid fa-pen-to-square"></i> Můžete kliknout do textu a poptávku ručně upravit.</p>
+                                <p class="text-slate-500 dark:text-slate-400 italic text-sm">Díky jasným detailům dostanete ty nejlepší nabídky bez zbytečného dohadování.</p>
+                            </div>
                             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
-                                <button type="button" class="w-full sm:w-auto bg-fixit-500 hover:bg-fixit-600 text-white px-10 py-4 rounded-full font-bold text-lg transition-transform duration-300 hover:scale-105 shadow-xl">Publikovat na Fixit</button>
+                                <button type="button" onclick="openModal('modal-chystame-publikace')" class="w-full sm:w-auto bg-fixit-500 hover:bg-fixit-600 text-white px-10 py-4 rounded-full font-bold text-lg transition-transform duration-300 hover:scale-105 shadow-xl">Publikovat na Fixit</button>
                                 <button type="button" id="poptavka-reset-btn" class="w-full sm:w-auto text-slate-500 dark:text-slate-400 hover:text-fixit-500 dark:hover:text-fixit-500 px-6 py-4 font-bold transition duration-300 underline">Vytvořit další poptávku</button>
                             </div>
                         </div>
@@ -595,6 +602,24 @@
                 Detailní přehledy pro jednotlivá řemesla aktuálně ladíme k dokonalosti. Brzy si zde budete moci prohlédnout konkrétní ukázky prací a typické opravy. Zadejte svůj e-mail a dáme vám vědět hned, jak odstartujeme!
             </p>
             <button onclick="closeModal('modal-chystame-zakaznik'); window.location.hash = 'newsletter';" class="bg-fixit-500 hover:bg-fixit-600 text-white px-8 py-4 rounded-xl font-bold transition hover:scale-105 shadow-lg">
+                Chci vědět o spuštění
+            </button>
+        </div>
+    </div>
+
+    <div id="modal-chystame-publikace" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal-box text-center">
+            <button onclick="closeModal('modal-chystame-publikace')" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300 transition">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <div class="w-24 h-24 bg-fixit-50 dark:bg-fixit-500/20 text-fixit-500 rounded-full flex items-center justify-center text-4xl mx-auto mb-6">
+                <i class="fa-solid fa-rocket"></i>
+            </div>
+            <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">Publikování poptávek chystáme! 🚧</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-loose text-lg mb-8">
+                Skvělá práce! Vaše poptávka je připravená. Odesílání reálných zakázek řemeslníkům spustíme v květnu 2026. Zadejte svůj e-mail a dáme vám vědět, jakmile to vypukne!
+            </p>
+            <button onclick="closeModal('modal-chystame-publikace'); window.location.hash = 'newsletter';" class="bg-fixit-500 hover:bg-fixit-600 text-white px-8 py-4 rounded-xl font-bold transition hover:scale-105 shadow-lg">
                 Chci vědět o spuštění
             </button>
         </div>
