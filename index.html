@@ -84,7 +84,6 @@
 </head>
 <body class="antialiased bg-white text-slate-900 dark:bg-fixit-dark dark:text-white">
 
-    <!-- LOADER -->
     <div id="loader">
         <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
             <path id="loader-hex" d="M50 10L85 30V70L50 90L15 70V30L50 10Z" fill="none" stroke="#f59e0b" stroke-width="3"/>
@@ -95,10 +94,8 @@
         <div id="loader-sub" class="text-slate-400 text-sm font-medium tracking-widest uppercase">Profesionální řemesla v Brně</div>
     </div>
 
-    <!-- MOBILNÍ OVERLAY -->
     <div id="mobile-overlay"></div>
 
-    <!-- MOBILNÍ MENU PANEL -->
     <div id="mobile-menu">
         <div class="flex items-center justify-between p-6 border-b border-slate-100 dark:border-slate-800">
             <div class="flex items-center gap-3">
@@ -119,6 +116,9 @@
             </a>
             <a href="#jak-to-funguje" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
                 <i class="fa-solid fa-list-check w-5 text-amber-500"></i> Jak to funguje
+            </a>
+            <a href="#remesla" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                <i class="fa-solid fa-toolbox w-5 text-amber-500"></i> Co Fixit řeší
             </a>
             <a href="#ai-poptavka" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
                 <i class="fa-solid fa-hard-hat w-5 text-amber-500"></i> Tvorba poptávky
@@ -154,6 +154,7 @@
                 <div class="hidden lg:flex space-x-6 items-center" id="nav-links">
                     <a href="#hero" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">O nás</a>
                     <a href="#jak-to-funguje" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">Jak to funguje</a>
+                    <a href="#remesla" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">Co Fixit řeší</a>
                     <a href="#ai-poptavka" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">Tvorba Poptávky</a>
                     <a href="#newsletter" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">Získat přístup</a>
                     <a href="#faq" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">FAQ</a>
@@ -167,7 +168,6 @@
                     <div class="hidden md:block">
                         <a href="#newsletter" class="bg-fixit-500 hover:bg-fixit-600 text-white px-6 py-2.5 rounded-full font-bold transition shadow-lg text-sm hover:scale-105">Brno 05/2026</a>
                     </div>
-                    <!-- HAMBURGER -->
                     <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition">
                         <i class="fa-solid fa-bars text-xl"></i>
                     </button>
@@ -232,7 +232,6 @@
         </div>
     </section>
 
-    <!-- SEKCE ŘEMESLA -->
     <section id="remesla" class="py-24 bg-white dark:bg-fixit-dark">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16">
@@ -477,7 +476,6 @@
     </section>
 
     <footer id="kontakt" class="bg-fixit-dark text-white border-t border-white/5">
-        <!-- MAPA BRNA -->
         <div class="w-full h-64 relative overflow-hidden">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d82859.44806957788!2d16.52395!3d49.19522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712943ac03f5111%3A0x400af0f6614b1b0!2sBrno!5e0!3m2!1scs!2scz!4v1700000000000"
