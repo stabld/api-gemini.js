@@ -46,31 +46,20 @@
         .poptavka-bubble-user { background-color:#f59e0b; color:white; border-radius:18px 18px 2px 18px; padding:12px 20px; max-width:80%; align-self:flex-end; box-shadow:0 4px 6px rgba(245,158,11,0.2); }
         .poptavka-bubble-ai { background-color:#f1f5f9; color:#0f172a; border-radius:18px 18px 18px 2px; padding:12px 20px; max-width:80%; align-self:flex-start; border:1px solid #e2e8f0; }
         .dark .poptavka-bubble-ai { background-color:#1e293b; color:#f8fafc; border-color:#334155; }
-        
-        /* MODAL OVERLAY & BOX */
         .modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
         .modal-overlay.open { opacity: 1; pointer-events: auto; }
         .modal-box { background: white; border-radius: 2rem; max-width: 640px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 2.5rem; position: relative; transform: scale(0.93); transition: transform 0.3s ease; }
         .dark .modal-box { background: #1e293b; color: #f1f5f9; }
         .modal-overlay.open .modal-box { transform: scale(1); }
 
-        /* MOBILNÍ MENU */
-        #mobile-menu { position:fixed; top:0; right:0; height:100vh; width:80%; max-width:320px; background:white; z-index:300; transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow:-10px 0 40px rgba(0,0,0,0.15); }
-        .dark #mobile-menu { background:#0f172a; }
-        #mobile-menu.open { transform:translateX(0); }
-        #mobile-overlay { position:fixed; inset:0; z-index:299; background:rgba(0,0,0,0.5); opacity:0; pointer-events:none; transition:opacity 0.3s ease; backdrop-filter:blur(4px); }
-        #mobile-overlay.open { opacity:1; pointer-events:auto; }
-
         /* LOADER */
         #loader { position:fixed; inset:0; z-index:9999; background:#020617; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:24px; transition:opacity 0.6s ease, transform 0.6s ease; }
         #loader.hide { opacity:0; pointer-events:none; transform:scale(1.05); }
         @keyframes draw { from{stroke-dashoffset:300} to{stroke-dashoffset:0} }
         #loader-hex { stroke-dasharray:300; stroke-dashoffset:300; animation:draw 1s ease forwards 0.2s; }
-        @keyframes fadein-up { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
         #loader-text { opacity:0; animation:fadein-up 0.5s ease forwards 0.8s; }
         #loader-sub { opacity:0; animation:fadein-up 0.5s ease forwards 1.1s; }
-
-        /* REVEAL ANIMACE */
+        @keyframes fadein-up { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
         .reveal { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease, transform 0.7s ease; }
         .reveal.visible { opacity:1; transform:translateY(0); }
         .reveal-delay-1 { transition-delay:0.1s; }
@@ -78,6 +67,13 @@
         .reveal-delay-3 { transition-delay:0.4s; }
         .reveal-delay-4 { transition-delay:0.55s; }
         .reveal-delay-5 { transition-delay:0.7s; }
+
+        /* MOBILNÍ MENU */
+        #mobile-menu { position:fixed; top:0; right:0; height:100vh; width:80%; max-width:320px; background:white; z-index:300; transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow:-10px 0 40px rgba(0,0,0,0.15); }
+        .dark #mobile-menu { background:#0f172a; }
+        #mobile-menu.open { transform:translateX(0); }
+        #mobile-overlay { position:fixed; inset:0; z-index:299; background:rgba(0,0,0,0.5); opacity:0; pointer-events:none; transition:opacity 0.3s ease; backdrop-filter:blur(4px); }
+        #mobile-overlay.open { opacity:1; pointer-events:auto; }
     </style>
     
     <script>
@@ -99,41 +95,6 @@
         <div id="loader-sub" class="text-slate-400 text-sm font-medium tracking-widest uppercase">Profesionální řemesla v Brně</div>
     </div>
 
-    <nav class="fixed w-full z-50 glass-nav">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer reveal reveal-delay-1" onclick="window.scrollTo(0,0)">
-                    <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
-                        <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" fill="#f59e0b"/>
-                        <circle cx="50" cy="48" r="16" fill="white"/>
-                        <path d="M40 58 L30 68 L45 64 Z" fill="white"/>
-                    </svg>
-                    <span class="font-extrabold text-2xl tracking-tighter dark:text-white">Fixit</span>
-                </div>
-                <div class="hidden lg:flex space-x-6 items-center reveal reveal-delay-2" id="nav-links">
-                    <a href="#hero" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">O nás</a>
-                    <a href="#jak-to-funguje" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">Jak to funguje</a>
-                    <a href="#ai-poptavka" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">Tvorba Poptávky</a>
-                    <a href="#newsletter" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">Získat přístup</a>
-                    <a href="#faq" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">FAQ</a>
-                    <a href="#kontakt" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">Kontakt</a>
-                </div>
-                <div class="flex items-center gap-4 reveal reveal-delay-3">
-                    <button id="theme-toggle" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
-                        <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden text-xl"></i>
-                        <i id="theme-toggle-light-icon" class="fa-solid fa-sun hidden text-xl"></i>
-                    </button>
-                    <div class="hidden md:block">
-                        <a href="#newsletter" class="bg-fixit-500 hover:bg-fixit-600 text-white px-6 py-2.5 rounded-full font-bold transition shadow-lg text-sm hover:scale-105">Brno 05/2026</a>
-                    </div>
-                    <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition">
-                        <i id="hamburger-icon" class="fa-solid fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
     <!-- MOBILNÍ OVERLAY -->
     <div id="mobile-overlay"></div>
 
@@ -153,47 +114,85 @@
             </button>
         </div>
         <nav class="p-6 flex flex-col gap-2">
-            <a href="#hero" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-fixit-50 dark:hover:bg-slate-800 hover:text-fixit-500 transition">
-                <i class="fa-solid fa-house w-5 text-fixit-500"></i> O nás
+            <a href="#hero" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                <i class="fa-solid fa-house w-5 text-amber-500"></i> O nás
             </a>
-            <a href="#jak-to-funguje" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-fixit-50 dark:hover:bg-slate-800 hover:text-fixit-500 transition">
-                <i class="fa-solid fa-list-check w-5 text-fixit-500"></i> Jak to funguje
+            <a href="#jak-to-funguje" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                <i class="fa-solid fa-list-check w-5 text-amber-500"></i> Jak to funguje
             </a>
-            <a href="#ai-poptavka" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-fixit-50 dark:hover:bg-slate-800 hover:text-fixit-500 transition">
-                <i class="fa-solid fa-hard-hat w-5 text-fixit-500"></i> Tvorba poptávky
+            <a href="#ai-poptavka" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                <i class="fa-solid fa-hard-hat w-5 text-amber-500"></i> Tvorba poptávky
             </a>
-            <a href="#newsletter" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-fixit-50 dark:hover:bg-slate-800 hover:text-fixit-500 transition">
-                <i class="fa-solid fa-envelope w-5 text-fixit-500"></i> Získat přístup
+            <a href="#newsletter" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                <i class="fa-solid fa-envelope w-5 text-amber-500"></i> Získat přístup
             </a>
-            <a href="#faq" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-fixit-50 dark:hover:bg-slate-800 hover:text-fixit-500 transition">
-                <i class="fa-solid fa-circle-question w-5 text-fixit-500"></i> FAQ
+            <a href="#faq" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                <i class="fa-solid fa-circle-question w-5 text-amber-500"></i> FAQ
             </a>
-            <a href="#kontakt" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-fixit-50 dark:hover:bg-slate-800 hover:text-fixit-500 transition">
-                <i class="fa-solid fa-phone w-5 text-fixit-500"></i> Kontakt
+            <a href="#kontakt" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                <i class="fa-solid fa-phone w-5 text-amber-500"></i> Kontakt
             </a>
         </nav>
         <div class="px-6 mt-4">
-            <a href="#newsletter" onclick="closeMobileMenu()" class="block w-full bg-fixit-500 hover:bg-fixit-600 text-white px-6 py-4 rounded-2xl font-bold text-center transition shadow-lg text-base">
+            <a href="#newsletter" onclick="closeMobileMenu()" class="block w-full bg-amber-500 hover:bg-amber-600 text-white px-6 py-4 rounded-2xl font-bold text-center transition shadow-lg text-base">
                 Brno 05/2026 – Získat přístup
             </a>
         </div>
-    </div> class="relative pt-32 pb-20 lg:pt-52 lg:pb-40 px-4 hero-gradient overflow-hidden">
+    </div>
+
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+                        <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" fill="#f59e0b"/>
+                        <circle cx="50" cy="48" r="16" fill="white"/>
+                        <path d="M40 58 L30 68 L45 64 Z" fill="white"/>
+                    </svg>
+                    <span class="font-extrabold text-2xl tracking-tighter dark:text-white">Fixit</span>
+                </div>
+                <div class="hidden lg:flex space-x-6 items-center" id="nav-links">
+                    <a href="#hero" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">O nás</a>
+                    <a href="#jak-to-funguje" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">Jak to funguje</a>
+                    <a href="#ai-poptavka" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">Tvorba Poptávky</a>
+                    <a href="#newsletter" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">Získat přístup</a>
+                    <a href="#faq" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">FAQ</a>
+                    <a href="#kontakt" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-fixit-500 transition">Kontakt</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+                        <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden text-xl"></i>
+                        <i id="theme-toggle-light-icon" class="fa-solid fa-sun hidden text-xl"></i>
+                    </button>
+                    <div class="hidden md:block">
+                        <a href="#newsletter" class="bg-fixit-500 hover:bg-fixit-600 text-white px-6 py-2.5 rounded-full font-bold transition shadow-lg text-sm hover:scale-105">Brno 05/2026</a>
+                    </div>
+                    <!-- HAMBURGER -->
+                    <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="relative pt-32 pb-20 lg:pt-52 lg:pb-40 px-4 hero-gradient overflow-hidden">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
             <div>
-                <div class="reveal reveal-delay-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-600 text-white font-bold text-xs mb-8 uppercase tracking-widest shadow-lg">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-600 reveal reveal-delay-1 text-white font-bold text-xs mb-8 uppercase tracking-widest shadow-lg">
                     <i class="fa-solid fa-location-dot"></i> Startujeme v Brně: Květen 2026
                 </div>
-                <h1 class="reveal reveal-delay-2 text-5xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1] dark:text-white">
+                <h1 class="text-5xl reveal reveal-delay-2 lg:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1] dark:text-white">
                     Váš domov v Brně si zaslouží <span class="text-fixit-500">profesionála.</span>
                 </h1>
-                <p class="reveal reveal-delay-3 text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-12 max-w-xl leading-loose">
+                <p class="text-lg lg:text-xl reveal reveal-delay-3 text-slate-600 dark:text-slate-400 mb-12 max-w-xl leading-loose">
                     Fixit propojuje brněnské domácnosti s ověřenými řemeslníky. Odteď už na opravy nejste sami – náš asistent Bořek vám kryje záda. Zkuste to hned.
                 </p>
-                <div class="reveal reveal-delay-4 flex flex-col sm:flex-row gap-5">
+                <div class="flex flex-col sm:flex-row gap-5 reveal reveal-delay-4">
                     <a href="#ai-poptavka" class="bg-fixit-500 hover:bg-fixit-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-transform duration-300 hover:scale-105 shadow-xl shadow-fixit-500/30 text-center">Vytvořit poptávku</a>
                 </div>
             </div>
-            <div class="reveal reveal-delay-5 hidden lg:block relative">
+            <div class="hidden lg:block relative reveal reveal-delay-5">
                 <div class="float-anim bg-white dark:bg-slate-800 p-4 rounded-[3rem] shadow-2xl border border-slate-100 dark:border-slate-700 relative z-10">
                     <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=1200" alt="Profesionální řemeslník" class="rounded-[2.5rem] w-full dark:opacity-90">
                 </div>
@@ -344,7 +343,7 @@
                     </div>
                     <div id="error-msg" class="hidden mt-8 p-6 bg-red-50 dark:bg-red-500/10 border border-red-500/20 rounded-2xl text-left">
                         <p class="font-bold text-red-700 dark:text-red-400 mb-3 text-lg">Něco se pokazilo.</p>
-                        <p class="text-base text-red-600 dark:text-red-300 leading-loose">Zkuste to prosím za okamžik znovu, nebo nám napište na e-mail: <br> <a href="/cdn-cgi/l/email-protection#22444b5a4b564158625147584c434f0c4158" class="font-bold underline"><span class="__cf_email__" data-cfemail="9afcf3e2f3eef9e0dae9ffe0f4fbf7b4f9e0">[email&#160;protected]</span></a>.</p>
+                        <p class="text-base text-red-600 dark:text-red-300 leading-loose">Zkuste to prosím za okamžik znovu, nebo nám napište na e-mail: <br> <a href="mailto:fixitcz@seznam.cz" class="font-bold underline">fixitcz@seznam.cz</a>.</p>
                     </div>
                 </div>
                 <div id="newsletter-success" class="hidden text-center p-8 bg-fixit-50 dark:bg-fixit-500/10 rounded-3xl border border-fixit-500/20 mt-8">
@@ -402,8 +401,8 @@
                     </div>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">Propojujeme brněnské domácnosti s ověřenými řemeslníky. Bezpečně, rychle, digitálně.</p>
                     <div class="space-y-2 text-sm">
-                        <a href="/cdn-cgi/l/email-protection#96f0ffeeffe2f5ecd6e5f3ecf8f7fbb8f5ec" class="flex items-center gap-2 text-slate-400 hover:text-fixit-500 transition">
-                            <i class="fa-solid fa-envelope text-fixit-500 w-4"></i> <span class="__cf_email__" data-cfemail="1f797667766b7c655f6c7a65717e72317c65">[email&#160;protected]</span>
+                        <a href="mailto:fixitcz@seznam.cz" class="flex items-center gap-2 text-slate-400 hover:text-fixit-500 transition">
+                            <i class="fa-solid fa-envelope text-fixit-500 w-4"></i> fixitcz@seznam.cz
                         </a>
                         <a href="tel:+420732573644" class="flex items-center gap-2 text-slate-400 hover:text-fixit-500 transition">
                             <i class="fa-solid fa-phone text-fixit-500 w-4"></i> +420 732 573 644
@@ -491,7 +490,7 @@
                 <p><strong class="text-slate-900 dark:text-white">2. Využití umělé inteligence (AI)</strong><br>
                 Tvorba poptávek je podporována modelem umělé inteligence, který analyzuje texty a fotografie. Odhady cen a postupy navržené AI jsou orientační. Závazná je vždy až finální nabídka dohodnutá přímo s vybraným řemeslníkem.</p>
                 <p><strong class="text-slate-900 dark:text-white">3. Bezpečné platby (Escrow)</strong><br>
-                Veškeré platby probíhají přes zabezpečenou platební bránu (např. Stripe). Částka za opravu je stržena z karty zákazníka a držena v bezpečné úschově (Escrow). Řemeslníkovi je vyplacena až poté, co zákazník potvrdí, že byla práce řádně dokončena.</p>
+                Veškeré platby probíhají přes zabezpečenou platební bránu (např. Stripe). Částka za opravu je stržena z karty zákazníka a držena v bezpečné úschově (Escrow). Řemeslníkovi je vyplacena až poté, co zákazník potvrdí, že byla práce řádně dokončena. Pokusy o obcházení platebního systému mohou vést k zablokování účtu.</p>
                 <p><strong class="text-slate-900 dark:text-white">4. Odpovědnost za vady</strong><br>
                 Platforma nenese přímou odpovědnost za kvalitu odvedené práce řemeslníka. V případě nespokojenosti nabízí Platforma mediační centrum pro řešení sporů a zablokování uvolnění prostředků z úschovy do doby vyřešení reklamace.</p>
                 <p><strong class="text-slate-900 dark:text-white">5. Závěrečná ustanovení</strong><br>
@@ -508,15 +507,15 @@
             <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-6">Zásady ochrany soukromí a Cookies</h2>
             <div class="space-y-4 text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
                 <p><strong class="text-slate-900 dark:text-white">1. Kdo zpracovává vaše údaje?</strong><br>
-                Provozovatelem platformy Fixit a správcem osobních údajů je projekt Fixit Brno (kontakt: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2c4a455445584f566c5f4956424d41024f56">[email&#160;protected]</a>). Zpracováváme údaje v souladu s nařízením EU 2016/679 (GDPR).</p>
+                Provozovatelem platformy Fixit a správcem osobních údajů je projekt Fixit Brno (kontakt: fixitcz@seznam.cz). Zpracováváme údaje v souladu s nařízením EU 2016/679 (GDPR).</p>
                 <p><strong class="text-slate-900 dark:text-white">2. Jaké údaje sbíráme a proč?</strong><br>
-                Zpracováváme pouze nezbytné údaje: e-mailové adresy pro přednostní přístup (Waitlist), popisy a fotografie závad pro AI analýzu, a v ostrém provozu kontaktní a fakturační údaje.</p>
+                Zpracováváme pouze nezbytné údaje: e-mailové adresy pro přednostní přístup (Waitlist), popisy a fotografie závad pro AI analýzu, a v ostrém provozu kontaktní a fakturační údaje. Vaše data používáme výhradně k zajištění chodu služby a k zasílání důležitých aktualizací.</p>
                 <p><strong class="text-slate-900 dark:text-white">3. Třetí strany a bezpečnost</strong><br>
-                Vaše texty a fotky odesíláme přes zabezpečené API poskytovatelům AI modelů (např. Google / Microsoft Azure) striktně za účelem vygenerování poptávky. Údaje neprodáváme reklamním agenturám.</p>
+                Vaše texty a fotky odesíláme přes zabezpečené API poskytovatelům AI modelů (např. Google / Microsoft Azure) striktně za účelem vygenerování poptávky. Platební údaje jsou zpracovávány šifrovaně externími partnery. Údaje neprodáváme reklamním agenturám.</p>
                 <p><strong class="text-slate-900 dark:text-white">4. Používání Cookies</strong><br>
-                Web používá nezbytné technické cookies pro správné fungování webu a uložení vašich preferencí. Pokud cookies nechcete, můžete je zakázat v nastavení prohlížeče.</p>
+                Web používá nezbytné technické cookies pro správné fungování webu a uložení vašich preferencí (např. tmavý vzhled, uložení e-mailu ve formuláři, aby na vás nevyskakoval znovu). Používáním webu s tímto souhlasíte. Pokud cookies nechcete, můžete je zakázat v nastavení prohlížeče.</p>
                 <p><strong class="text-slate-900 dark:text-white">5. Vaše práva (GDPR)</strong><br>
-                Máte právo kdykoliv požádat o přístup ke svým datům, jejich opravu nebo úplný výmaz z našich databází. Stačí nám napsat na <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="94f2fdecfde0f7eed4e7f1eefaf5f9baf7ee">[email&#160;protected]</a>.</p>
+                Máte právo kdykoliv požádat o přístup ke svým datům, jejich opravu nebo úplný výmaz z našich databází (právo být zapomenut). Stačí nám napsat na fixitcz@seznam.cz a my váš e-mail a všechna přidružená data okamžitě a trvale odstraníme.</p>
             </div>
         </div>
     </div>
@@ -552,21 +551,29 @@
         </button>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module">
+    <script type="module">
         window.toggleChat = function() {
             document.getElementById('chat-widget').classList.toggle('open');
         }
 
+        // --- LOADER (opraveno - spustí se přímo bez load eventu) ---
+        setTimeout(() => {
+            const loader = document.getElementById('loader');
+            loader.classList.add('hide');
+            setTimeout(() => {
+                loader.style.display = 'none';
+                document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+            }, 600);
+        }, 1800);
+
         // --- MOBILNÍ MENU ---
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileOverlay = document.getElementById('mobile-overlay');
-
         window.closeMobileMenu = function() {
             mobileMenu.classList.remove('open');
             mobileOverlay.classList.remove('open');
             document.body.style.overflow = '';
         };
-
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             mobileMenu.classList.add('open');
             mobileOverlay.classList.add('open');
@@ -575,18 +582,7 @@
         document.getElementById('mobile-menu-close').addEventListener('click', closeMobileMenu);
         mobileOverlay.addEventListener('click', closeMobileMenu);
 
-        // --- LOADER ---
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hide');
-                setTimeout(() => {
-                    document.getElementById('loader').style.display = 'none';
-                    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-                }, 600);
-            }, 2000);
-        });
-
-        // --- DARK MODE PŘEPÍNAČ ---
+        // --- DARK MODE ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const updateIcons = () => {
             const isDark = document.documentElement.classList.contains('dark');
@@ -602,7 +598,7 @@
             });
         }
 
-        // --- FUNKCE PRO VYSKAKOVACÍ OKNA (MODALS) ---
+        // --- MODALS ---
         window.openModal = function(id) {
             const el = document.getElementById(id);
             if (el) { el.classList.add('open'); document.body.style.overflow = 'hidden'; }
@@ -844,7 +840,6 @@ Pokud máš vše: {"status": "done", "nazev": "titulek", "kategorie": "obor", "p
                 if (response.ok && data.success) {
                     newsletterArea.classList.add('hidden');
                     newsletterSuccess.classList.remove('hidden');
-                    loadCount();
                 } else { throw new Error("Chyba"); }
             } catch (err) {
                 errorMsg.classList.remove('hidden');
@@ -872,4 +867,16 @@ Pokud máš vše: {"status": "done", "nazev": "titulek", "kategorie": "obor", "p
         const sections = document.querySelectorAll('section[id], footer[id]');
         const navItems = document.querySelectorAll('.nav-item');
         const updateScrollSpy = () => {
-            let cu
+            let current = '';
+            sections.forEach(section => { if (window.scrollY >= section.offsetTop - 150) current = section.getAttribute('id'); });
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) current = 'kontakt';
+            navItems.forEach(link => {
+                link.classList.remove('nav-link-active');
+                if (current && link.getAttribute('href') === `#${current}`) link.classList.add('nav-link-active');
+            });
+        };
+        window.addEventListener('scroll', updateScrollSpy);
+        updateScrollSpy();
+    </script>
+</body>
+</html>
