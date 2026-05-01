@@ -449,10 +449,17 @@
         </div>
     </section>
 
-    <section id="newsletter" class="py-24 bg-slate-50 dark:bg-slate-900">
+    <section id="newsletter" class="py-24 bg-slate-50 dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <div class="bg-white dark:bg-slate-800 p-8 md:p-16 rounded-[3rem] border border-slate-200 dark:border-slate-700 shadow-xl">
-                <h2 class="text-3xl md:text-5xl font-extrabold mb-8 dark:text-white">Získejte přístup v Brně dříve</h2>
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-6 dark:text-white">Získejte přístup v Brně dříve</h2>
+                
+                <div class="flex justify-center mb-8">
+                    <span class="bg-green-100 text-green-700 border border-green-200 px-6 py-2 rounded-full font-bold text-sm tracking-widest uppercase shadow-sm">
+                        🎁 První poptávka zcela zdarma
+                    </span>
+                </div>
+
                 <div id="subscriber-count" class="inline-flex items-center gap-3 bg-fixit-50 dark:bg-fixit-500/10 border border-fixit-500/30 px-6 py-3 rounded-full mb-8">
                     <div class="flex -space-x-2">
                         <div class="w-8 h-8 rounded-full bg-fixit-500 flex items-center justify-center text-white text-xs font-bold">J</div>
@@ -461,7 +468,9 @@
                     </div>
                     <p class="text-slate-700 dark:text-slate-300 font-bold text-sm">Už <span id="count-number" class="text-fixit-500 text-lg">...</span> lidí čeká na přístup</p>
                 </div>
-                <p class="text-slate-600 dark:text-slate-400 text-xl mb-12 max-w-xl mx-auto leading-loose">Zanechte nám svůj e-mail a my vás budeme informovat, jakmile v červnu 2026 spustíme brněnský provoz. O nic nepřijdete!</p>
+                <p class="text-slate-600 dark:text-slate-400 text-xl mb-12 max-w-xl mx-auto leading-loose">
+                    Zanechte nám svůj e-mail a my vás budeme informovat, jakmile v červnu 2026 spustíme brněnský provoz. O nic nepřijdete a první zadání máte na nás!
+                </p>
                 <div id="newsletter-area">
                     <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
                         <input type="email" name="email" id="newsletter-email" required placeholder="Váš e-mail" class="flex-grow pl-8 pr-6 py-5 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-fixit-dark dark:text-white focus:ring-2 focus:ring-fixit-500 outline-none transition text-lg">
@@ -706,12 +715,12 @@
             <div class="w-24 h-24 bg-fixit-50 dark:bg-fixit-500/20 text-fixit-500 rounded-full flex items-center justify-center text-4xl mx-auto mb-6">
                 <i class="fa-solid fa-gift"></i>
             </div>
-            <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">Získej první poptávku zdarma</h2>
+            <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">Máme pro vás dárek! 🎁</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-loose text-lg mb-8">
-                Vyzkoušej Fixit bez rizika. Zadej svůj problém a my ti najdeme řemeslníka.
+                Chcete si Fixit vyzkoušet bez rizika? Zapište se na náš waitlist a svou první poptávku řemeslníka od nás dostanete úplně zdarma.
             </p>
-            <button onclick="closeModal('modal-promo'); window.location.hash = 'ai-poptavka';" class="bg-fixit-500 hover:bg-fixit-600 text-white px-8 py-4 rounded-xl font-bold transition hover:scale-105 shadow-lg">
-                Zadat poptávku
+            <button onclick="closeModal('modal-promo'); window.location.hash = 'newsletter';" class="bg-fixit-500 hover:bg-fixit-600 text-white px-8 py-4 rounded-xl font-bold transition hover:scale-105 shadow-lg">
+                Získat poptávku zdarma
             </button>
         </div>
     </div>
@@ -863,7 +872,7 @@
                 openModal('modal-promo');
                 sessionStorage.setItem('promoShown', 'true');
             }
-        }, 4000);
+        }, 7000); // <-- Změněno na 7 sekund
 
         // --- API ---
         async function callGeminiAPI(parts, systemPrompt, useJson = false) {
