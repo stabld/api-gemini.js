@@ -118,374 +118,381 @@
         } else { document.documentElement.classList.remove('dark'); }
     </script>
 </head>
-<body class="antialiased bg-white text-slate-900 dark:bg-remexo-dark dark:text-white">
+<body class="antialiased bg-remexo-dark text-slate-900 dark:text-white">
 
-    <div id="loader">
-        <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
-            <path id="loader-hex" d="M50 10L85 30V70L50 90L15 70V30L50 10Z" fill="none" stroke="#f59e0b" stroke-width="3"/>
-            <circle cx="50" cy="48" r="16" fill="#f59e0b"/>
-            <path d="M40 58 L30 68 L45 64 Z" fill="#f59e0b"/>
-        </svg>
-        <div id="loader-text" class="text-white font-extrabold text-3xl tracking-tighter">Remexo</div>
-        <div id="loader-sub" class="text-slate-400 text-sm font-medium tracking-widest uppercase">Profesionální řemesla v Brně</div>
-    </div>
+    <!-- Bílý obal celého webu (zajišťuje, že bílé pozadí končí přesně s obsahem) -->
+    <div class="bg-white dark:bg-remexo-dark w-full">
 
-    <div id="mobile-overlay"></div>
-
-    <div id="mobile-menu">
-        <div class="flex items-center justify-between p-6 border-b border-slate-100 dark:border-slate-800">
-            <div class="flex items-center gap-3">
-                <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
-                    <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" fill="#f59e0b"/>
-                    <circle cx="50" cy="48" r="16" fill="white"/>
-                    <path d="M40 58 L30 68 L45 64 Z" fill="white"/>
-                </svg>
-                <span class="font-extrabold text-xl tracking-tighter dark:text-white">Remexo</span>
-            </div>
-            <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
-                <i class="fa-solid fa-times text-lg"></i>
-            </button>
+        <div id="loader">
+            <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
+                <path id="loader-hex" d="M50 10L85 30V70L50 90L15 70V30L50 10Z" fill="none" stroke="#f59e0b" stroke-width="3"/>
+                <circle cx="50" cy="48" r="16" fill="#f59e0b"/>
+                <path d="M40 58 L30 68 L45 64 Z" fill="#f59e0b"/>
+            </svg>
+            <div id="loader-text" class="text-white font-extrabold text-3xl tracking-tighter">Remexo</div>
+            <div id="loader-sub" class="text-slate-400 text-sm font-medium tracking-widest uppercase">Profesionální řemesla v Brně</div>
         </div>
-        <nav class="p-6 flex flex-col gap-2">
-            <a href="#hero" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
-                <i class="fa-solid fa-house w-5 text-amber-500"></i> O nás
-            </a>
-            <a href="#jak-to-funguje" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
-                <i class="fa-solid fa-list-check w-5 text-amber-500"></i> Jak to funguje
-            </a>
-            <a href="#remesla" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
-                <i class="fa-solid fa-toolbox w-5 text-amber-500"></i> Co Remexo řeší
-            </a>
-            <a href="#ai-poptavka" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
-                <i class="fa-solid fa-hard-hat w-5 text-amber-500"></i> Tvorba poptávky
-            </a>
-            <a href="#newsletter" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
-                <i class="fa-solid fa-envelope w-5 text-amber-500"></i> Získat přístup
-            </a>
-            <a href="#faq" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
-                <i class="fa-solid fa-circle-question w-5 text-amber-500"></i> FAQ
-            </a>
-            <a href="#kontakt" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
-                <i class="fa-solid fa-phone w-5 text-amber-500"></i> Kontakt
-            </a>
-        </nav>
-        <div class="px-6 mt-4">
-            <a href="#newsletter" onclick="closeMobileMenu()" class="block w-full bg-amber-500 hover:bg-amber-600 text-white px-6 py-4 rounded-2xl font-bold text-center transition shadow-lg text-base">
-                Brno 06/2026 – Získat přístup
-            </a>
-        </div>
-    </div>
 
-    <nav class="fixed w-full z-50 glass-nav">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+        <div id="mobile-overlay"></div>
+
+        <div id="mobile-menu">
+            <div class="flex items-center justify-between p-6 border-b border-slate-100 dark:border-slate-800">
+                <div class="flex items-center gap-3">
+                    <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
                         <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" fill="#f59e0b"/>
                         <circle cx="50" cy="48" r="16" fill="white"/>
                         <path d="M40 58 L30 68 L45 64 Z" fill="white"/>
                     </svg>
-                    <span class="font-extrabold text-2xl tracking-tighter dark:text-white">Remexo</span>
+                    <span class="font-extrabold text-xl tracking-tighter dark:text-white">Remexo</span>
                 </div>
-                <div class="hidden lg:flex space-x-6 items-center" id="nav-links">
-                    <a href="#hero" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">O nás</a>
-                    <a href="#jak-to-funguje" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Jak to funguje</a>
-                    <a href="#remesla" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Co Remexo řeší</a>
-                    <a href="#ai-poptavka" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Tvorba poptávky</a>
-                     <a href="#o-zakladateli" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">O zakladateli</a>
-                    <a href="#newsletter" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Získat přístup</a>
-                    <a href="#faq" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">FAQ</a>
-                    <a href="#kontakt" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Kontakt</a>
-                </div>
-                <div class="flex items-center gap-4">
-                    <button id="theme-toggle" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
-                        <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden text-xl"></i>
-                        <i id="theme-toggle-light-icon" class="fa-solid fa-sun hidden text-xl"></i>
-                    </button>
-                    <div class="hidden md:block">
-                        <a href="#newsletter" class="bg-remexo-500 hover:bg-remexo-600 text-white px-6 py-2.5 rounded-full font-bold transition shadow-lg text-sm hover:scale-105">Brno 06/2026</a>
+                <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    <i class="fa-solid fa-times text-lg"></i>
+                </button>
+            </div>
+            <nav class="p-6 flex flex-col gap-2">
+                <a href="#hero" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                    <i class="fa-solid fa-house w-5 text-amber-500"></i> O nás
+                </a>
+                <a href="#jak-to-funguje" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                    <i class="fa-solid fa-list-check w-5 text-amber-500"></i> Jak to funguje
+                </a>
+                <a href="#remesla" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                    <i class="fa-solid fa-toolbox w-5 text-amber-500"></i> Co Remexo řeší
+                </a>
+                <a href="#ai-poptavka" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                    <i class="fa-solid fa-hard-hat w-5 text-amber-500"></i> Tvorba poptávky
+                </a>
+                <a href="#newsletter" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                    <i class="fa-solid fa-envelope w-5 text-amber-500"></i> Získat přístup
+                </a>
+                <a href="#faq" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                    <i class="fa-solid fa-circle-question w-5 text-amber-500"></i> FAQ
+                </a>
+                <a href="#kontakt" onclick="closeMobileMenu()" class="flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-300 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-amber-500 transition">
+                    <i class="fa-solid fa-phone w-5 text-amber-500"></i> Kontakt
+                </a>
+            </nav>
+            <div class="px-6 mt-4">
+                <a href="#newsletter" onclick="closeMobileMenu()" class="block w-full bg-amber-500 hover:bg-amber-600 text-white px-6 py-4 rounded-2xl font-bold text-center transition shadow-lg text-base">
+                    Brno 06/2026 – Získat přístup
+                </a>
+            </div>
+        </div>
+
+        <nav class="fixed w-full z-50 glass-nav">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+                            <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" fill="#f59e0b"/>
+                            <circle cx="50" cy="48" r="16" fill="white"/>
+                            <path d="M40 58 L30 68 L45 64 Z" fill="white"/>
+                        </svg>
+                        <span class="font-extrabold text-2xl tracking-tighter dark:text-white">Remexo</span>
                     </div>
-                    <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <section id="hero" class="relative pt-32 pb-20 lg:pt-52 lg:pb-40 px-4 hero-gradient overflow-hidden">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-600 reveal reveal-delay-1 text-white font-bold text-xs mb-8 uppercase tracking-widest shadow-lg">
-                    <i class="fa-solid fa-location-dot"></i> Startujeme v Brně: Červen 2026
-                </div>
-                <h1 class="text-5xl reveal reveal-delay-2 lg:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1] dark:text-white">
-                    Najdeme ti ověřeného řemeslníka <span class="text-remexo-500">bez stresu.</span>
-                </h1>
-                <p class="text-lg lg:text-xl reveal reveal-delay-3 text-slate-600 dark:text-slate-400 mb-12 max-w-xl leading-loose">
-                    Stačí popsat problém a my se o zbytek postaráme. Bez složitého hledání, bez nejistoty.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-5 reveal reveal-delay-4">
-                    <a href="#ai-poptavka" class="bg-remexo-500 hover:bg-remexo-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-transform duration-300 hover:scale-105 shadow-xl shadow-remexo-500/30 text-center">Vytvořit poptávku</a>
-                </div>
-            </div>
-            <div class="hidden lg:block relative reveal reveal-delay-5">
-                <div class="float-anim bg-white dark:bg-slate-800 p-4 rounded-[3rem] shadow-2xl border border-slate-100 dark:border-slate-700 relative z-10">
-                    <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=1200" alt="Profesionální řemeslník" class="rounded-[2.5rem] w-full dark:opacity-90">
-                </div>
-                <div class="absolute -bottom-8 -left-8 bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-700 z-20 flex items-center gap-5">
-                    <div class="w-16 h-16 bg-remexo-50 dark:bg-remexo-500/20 rounded-2xl flex items-center justify-center text-remexo-600 dark:text-remexo-500 text-3xl font-black italic">100%</div>
-                    <p class="text-sm font-bold text-slate-500 dark:text-slate-300 uppercase tracking-widest leading-tight">Ověření <br>profesionálové</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="jak-to-funguje" class="py-24 bg-slate-50 dark:bg-slate-900 border-y border-slate-100 dark:border-slate-800 relative z-10">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-extrabold mb-16 dark:text-white">Vyřeš to ve 3 krocích</h2>
-            <div class="grid md:grid-cols-3 gap-8 relative z-20">
-                <div class="bg-white dark:bg-slate-800 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-105 group cursor-default relative z-20">
-                    <div class="w-14 h-14 bg-remexo-50 dark:bg-remexo-500 text-remexo-600 dark:text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-8 group-hover:scale-110 transition-transform duration-300">1</div>
-                    <h4 class="text-2xl font-bold mb-4 dark:text-white">Popíšeš problém</h4>
-                    <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mt-4">Např. „nefunguje zásuvka“ nebo „teče kohoutek“.</p>
-                </div>
-                <div class="bg-white dark:bg-slate-800 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-105 group cursor-default relative z-20">
-                    <div class="w-14 h-14 bg-remexo-50 dark:bg-remexo-500 text-remexo-600 dark:text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-8 group-hover:scale-110 transition-transform duration-300">2</div>
-                    <h4 class="text-2xl font-bold mb-4 dark:text-white">My najdeme řemeslníka</h4>
-                    <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mt-4">Ověřeného a vhodného pro tvůj problém.</p>
-                </div>
-                <div class="bg-white dark:bg-slate-800 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-105 group cursor-default relative z-20">
-                    <div class="w-14 h-14 bg-remexo-50 dark:bg-remexo-500 text-remexo-600 dark:text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-8 group-hover:scale-110 transition-transform duration-300">3</div>
-                    <h4 class="text-2xl font-bold mb-4 dark:text-white">Domluvíš se na realizaci</h4>
-                    <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mt-4">Jednoduše, bez stresu.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="remesla" class="py-24 bg-white dark:bg-remexo-dark">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-extrabold mb-4 dark:text-white">Co Remexo řeší?</h2>
-                <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-loose">Od prasklé trubky po rozbitou zásuvku – Bořek najde správného profíka na cokoli v domácnosti.</p>
-            </div>
-            
-            <div id="katalog-app" class="relative"></div>
-
-        </div>
-    </section>
-
-   <section id="ai-poptavka" class="py-24 bg-slate-50 dark:bg-slate-900 border-y border-slate-100 dark:border-slate-800">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-4xl font-extrabold mb-4 dark:text-white text-center">Tvorba poptávky s asistentem</h2>
-            <p class="text-lg text-slate-600 dark:text-slate-400 text-center mb-16 max-w-2xl mx-auto leading-loose">
-                Přiložte fotku závady nebo ji popište svými slovy. Asistent problém zanalyzuje, případně se doptá na detaily, a vytvoří dokonalé zadání pro řemeslníky.
-            </p>
-            <div class="bg-slate-50 dark:bg-slate-800 p-8 md:p-12 rounded-[3rem] shadow-xl border border-slate-200 dark:border-slate-700 relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-80 h-80 bg-remexo-500/10 rounded-full blur-[100px] pointer-events-none"></div>
-                <div class="mb-10 flex items-center gap-6 relative z-10">
-                    <div class="w-16 h-16 rounded-full bg-remexo-500 flex items-center justify-center text-white shadow-inner flex-shrink-0">
-                        <i class="fa-solid fa-hard-hat text-2xl"></i>
+                    <div class="hidden lg:flex space-x-6 items-center" id="nav-links">
+                        <a href="#hero" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">O nás</a>
+                        <a href="#jak-to-funguje" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Jak to funguje</a>
+                        <a href="#remesla" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Co Remexo řeší</a>
+                        <a href="#ai-poptavka" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Tvorba poptávky</a>
+                         <a href="#o-zakladateli" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">O zakladateli</a>
+                        <a href="#newsletter" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Získat přístup</a>
+                        <a href="#faq" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">FAQ</a>
+                        <a href="#kontakt" class="nav-item relative text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-remexo-500 transition">Kontakt</a>
                     </div>
-                    <div>
-                        <h3 class="text-2xl font-extrabold mb-1 text-slate-900 dark:text-white">Asistent Bořek</h3>
-                        <p class="text-remexo-600 dark:text-remexo-500 text-sm font-bold uppercase tracking-widest">Příprava zakázky</p>
+                    <div class="flex items-center gap-4">
+                        <button id="theme-toggle" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+                            <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden text-xl"></i>
+                            <i id="theme-toggle-light-icon" class="fa-solid fa-sun hidden text-xl"></i>
+                        </button>
+                        <div class="hidden md:block">
+                            <a href="#newsletter" class="bg-remexo-500 hover:bg-remexo-600 text-white px-6 py-2.5 rounded-full font-bold transition shadow-lg text-sm hover:scale-105">Brno 06/2026</a>
+                        </div>
+                        <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition">
+                            <i class="fa-solid fa-bars text-xl"></i>
+                        </button>
                     </div>
+                </div>
+            </div>
+        </nav>
+
+        <section id="hero" class="relative pt-32 pb-20 lg:pt-52 lg:pb-40 px-4 hero-gradient overflow-hidden">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-600 reveal reveal-delay-1 text-white font-bold text-xs mb-8 uppercase tracking-widest shadow-lg">
+                        <i class="fa-solid fa-location-dot"></i> Startujeme v Brně: Červen 2026
+                    </div>
+                    <h1 class="text-5xl reveal reveal-delay-2 lg:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1] dark:text-white">
+                        Najdeme ti ověřeného řemeslníka <span class="text-remexo-500">bez stresu.</span>
+                    </h1>
+                    <p class="text-lg lg:text-xl reveal reveal-delay-3 text-slate-600 dark:text-slate-400 mb-12 max-w-xl leading-loose">
+                        Stačí popsat problém a my se o zbytek postaráme. Bez složitého hledání, bez nejistoty.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-5 reveal reveal-delay-4">
+                        <a href="#ai-poptavka" class="bg-remexo-500 hover:bg-remexo-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-transform duration-300 hover:scale-105 shadow-xl shadow-remexo-500/30 text-center">Vytvořit poptávku</a>
+                    </div>
+                </div>
+                <div class="hidden lg:block relative reveal reveal-delay-5">
+                    <div class="float-anim bg-white dark:bg-slate-800 p-4 rounded-[3rem] shadow-2xl border border-slate-100 dark:border-slate-700 relative z-10">
+                        <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=1200" alt="Profesionální řemeslník" class="rounded-[2.5rem] w-full dark:opacity-90">
+                    </div>
+                    <div class="absolute -bottom-8 -left-8 bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-700 z-20 flex items-center gap-5">
+                        <div class="w-16 h-16 bg-remexo-50 dark:bg-remexo-500/20 rounded-2xl flex items-center justify-center text-remexo-600 dark:text-remexo-500 text-3xl font-black italic">100%</div>
+                        <p class="text-sm font-bold text-slate-500 dark:text-slate-300 uppercase tracking-widest leading-tight">Ověření <br>profesionálové</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="jak-to-funguje" class="py-24 bg-slate-50 dark:bg-slate-900 border-y border-slate-100 dark:border-slate-800 relative z-10">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-4xl font-extrabold mb-16 dark:text-white">Vyřeš to ve 3 krocích</h2>
+                <div class="grid md:grid-cols-3 gap-8 relative z-20">
+                    <div class="bg-white dark:bg-slate-800 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-105 group cursor-default relative z-20">
+                        <div class="w-14 h-14 bg-remexo-50 dark:bg-remexo-500 text-remexo-600 dark:text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-8 group-hover:scale-110 transition-transform duration-300">1</div>
+                        <h4 class="text-2xl font-bold mb-4 dark:text-white">Popíšeš problém</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mt-4">Např. „nefunguje zásuvka“ nebo „teče kohoutek“.</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-105 group cursor-default relative z-20">
+                        <div class="w-14 h-14 bg-remexo-50 dark:bg-remexo-500 text-remexo-600 dark:text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-8 group-hover:scale-110 transition-transform duration-300">2</div>
+                        <h4 class="text-2xl font-bold mb-4 dark:text-white">My najdeme řemeslníka</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mt-4">Ověřeného a vhodného pro tvůj problém.</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-105 group cursor-default relative z-20">
+                        <div class="w-14 h-14 bg-remexo-50 dark:bg-remexo-500 text-remexo-600 dark:text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-8 group-hover:scale-110 transition-transform duration-300">3</div>
+                        <h4 class="text-2xl font-bold mb-4 dark:text-white">Domluvíš se na realizaci</h4>
+                        <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mt-4">Jednoduše, bez stresu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="remesla" class="py-24 bg-white dark:bg-remexo-dark">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold mb-4 dark:text-white">Co Remexo řeší?</h2>
+                    <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-loose">Od prasklé trubky po rozbitou zásuvku – Bořek najde správného profíka na cokoli v domácnosti.</p>
                 </div>
                 
-                <div id="poptavka-initial-form" class="space-y-6 relative z-10">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="flex flex-col gap-3">
-                            <label class="font-bold text-slate-700 dark:text-slate-300">Co přesně se pokazilo?</label>
-                            <textarea id="poptavka-input" rows="5" class="w-full h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl py-5 px-6 text-slate-900 dark:text-white text-lg leading-relaxed focus:ring-2 focus:ring-remexo-500 outline-none transition shadow-sm resize-none" placeholder="Př: Potřebuju opravit skříňku v kuchyni, utrhla se dvířka a nejdou nasadit zpátky..."></textarea>
+                <div id="katalog-app" class="relative"></div>
+
+            </div>
+        </section>
+
+       <section id="ai-poptavka" class="py-24 bg-slate-50 dark:bg-slate-900 border-y border-slate-100 dark:border-slate-800">
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="text-4xl font-extrabold mb-4 dark:text-white text-center">Tvorba poptávky s asistentem</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400 text-center mb-16 max-w-2xl mx-auto leading-loose">
+                    Přiložte fotku závady nebo ji popište svými slovy. Asistent problém zanalyzuje, případně se doptá na detaily, a vytvoří dokonalé zadání pro řemeslníky.
+                </p>
+                <div class="bg-slate-50 dark:bg-slate-800 p-8 md:p-12 rounded-[3rem] shadow-xl border border-slate-200 dark:border-slate-700 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-80 h-80 bg-remexo-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+                    <div class="mb-10 flex items-center gap-6 relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-remexo-500 flex items-center justify-center text-white shadow-inner flex-shrink-0">
+                            <i class="fa-solid fa-hard-hat text-2xl"></i>
                         </div>
-                        <div class="flex flex-col gap-3">
-                            <label class="font-bold text-slate-700 dark:text-slate-300">Přiložte fotku (volitelné)</label>
-                            <div class="relative group h-full min-h-[140px]">
-                                <input type="file" id="poptavka-photo" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
-                                <div id="poptavka-preview-zone" class="w-full h-full border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-2xl flex flex-col items-center justify-center bg-white dark:bg-slate-900 group-hover:border-remexo-500 transition shadow-sm overflow-hidden relative">
-                                    <i class="fa-solid fa-camera text-4xl mb-3 text-slate-400"></i>
-                                    <p class="text-lg text-slate-500 dark:text-slate-400 text-center leading-loose font-medium px-4">Nahrát fotku závady</p>
-                                    <img id="poptavka-photo-preview" class="hidden absolute inset-0 w-full h-full object-cover">
+                        <div>
+                            <h3 class="text-2xl font-extrabold mb-1 text-slate-900 dark:text-white">Asistent Bořek</h3>
+                            <p class="text-remexo-600 dark:text-remexo-500 text-sm font-bold uppercase tracking-widest">Příprava zakázky</p>
+                        </div>
+                    </div>
+                    
+                    <div id="poptavka-initial-form" class="space-y-6 relative z-10">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="flex flex-col gap-3">
+                                <label class="font-bold text-slate-700 dark:text-slate-300">Co přesně se pokazilo?</label>
+                                <textarea id="poptavka-input" rows="5" class="w-full h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl py-5 px-6 text-slate-900 dark:text-white text-lg leading-relaxed focus:ring-2 focus:ring-remexo-500 outline-none transition shadow-sm resize-none" placeholder="Př: Potřebuju opravit skříňku v kuchyni, utrhla se dvířka a nejdou nasadit zpátky..."></textarea>
+                            </div>
+                            <div class="flex flex-col gap-3">
+                                <label class="font-bold text-slate-700 dark:text-slate-300">Přiložte fotku (volitelné)</label>
+                                <div class="relative group h-full min-h-[140px]">
+                                    <input type="file" id="poptavka-photo" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                                    <div id="poptavka-preview-zone" class="w-full h-full border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-2xl flex flex-col items-center justify-center bg-white dark:bg-slate-900 group-hover:border-remexo-500 transition shadow-sm overflow-hidden relative">
+                                        <i class="fa-solid fa-camera text-4xl mb-3 text-slate-400"></i>
+                                        <p class="text-lg text-slate-500 dark:text-slate-400 text-center leading-loose font-medium px-4">Nahrát fotku závady</p>
+                                        <img id="poptavka-photo-preview" class="hidden absolute inset-0 w-full h-full object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="poptavka-btn" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-remexo-500 dark:hover:bg-remexo-500 hover:text-white font-black py-6 rounded-2xl text-xl transition-all duration-300 hover:scale-[1.02] shadow-xl mt-4">
+                            Analyzovat a vytvořit poptávku
+                        </button>
+                    </div>
+
+                    <div id="poptavka-chat-box" class="hidden flex flex-col gap-6 relative z-10">
+                        <div id="poptavka-chat-messages" class="flex flex-col gap-4 max-h-[500px] overflow-y-auto p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-inner"></div>
+                        <div id="poptavka-reply-area" class="flex gap-4 hidden mt-2">
+                            <input type="text" id="poptavka-reply-input" class="flex-grow bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-full pl-6 pr-4 py-4 text-slate-900 dark:text-white focus:ring-2 focus:ring-remexo-500 outline-none leading-relaxed text-lg shadow-sm" placeholder="Odpovězte asistentovi...">
+                            <button id="poptavka-reply-btn" class="bg-remexo-500 hover:bg-remexo-600 text-white px-8 py-4 rounded-full font-bold transition-transform hover:scale-105 shadow-md">Odeslat</button>
+                        </div>
+                    </div>
+
+                    <div id="poptavka-loading" class="hidden mt-12 text-center text-slate-500 dark:text-slate-400 relative z-10">
+                        <i class="fa-solid fa-microchip fa-spin text-4xl text-remexo-500 mb-6"></i>
+                        <p class="font-bold text-xl">Bořek analyzuje data...</p>
+                    </div>
+
+                    <div id="poptavka-result" class="hidden mt-12 pt-12 border-t border-slate-200 dark:border-slate-700 animate-in fade-in slide-in-from-bottom-5 relative z-10">
+                        <div id="poptavka-rada-box" class="mb-10 bg-remexo-50 dark:bg-remexo-500/10 border border-remexo-500 cta-highlight-box rounded-2xl p-6 shadow-sm hidden">
+                            <div class="flex items-start gap-4">
+                                <i class="fa-solid fa-lightbulb text-remexo-500 text-2xl mt-1"></i>
+                                <div>
+                                    <h4 class="text-slate-900 dark:text-white font-extrabold mb-2 uppercase tracking-widest text-sm">Bořkova rychlá rada</h4>
+                                    <p id="pop-rada" class="text-lg text-slate-800 dark:text-slate-200 leading-relaxed"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl shadow-sm"><i class="fa-solid fa-check"></i></div>
+                            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">Dokonalá poptávka je na světě!</h3>
+                        </div>
+                        <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-2 h-full bg-remexo-500"></div>
+                            <div class="flex flex-wrap gap-4 mb-6">
+                                <span id="pop-kategorie" class="bg-remexo-100 text-remexo-700 dark:bg-remexo-500/20 dark:text-remexo-400 px-4 py-2 rounded-full font-bold text-sm uppercase tracking-widest">Kategorie</span>
+                                <span id="pop-nalehavost" class="bg-red-100 text-red-600 dark:bg-red-500/20 dark:text-red-400 px-4 py-2 rounded-full font-bold text-sm uppercase tracking-widest">Naléhavost</span>
+                                <span id="pop-cena" class="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 px-4 py-2 rounded-full font-bold text-sm uppercase tracking-widest border border-slate-200 dark:border-slate-700">Cena</span>
+                            </div>
+                            
+                            <h4 id="pop-nazev" contenteditable="true" spellcheck="false" class="text-3xl font-extrabold mb-4 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800/50 focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-remexo-500 rounded-xl px-4 py-2 -mx-4 transition-all cursor-text border border-transparent hover:border-slate-200 dark:hover:border-slate-700">...</h4>
+                            
+                            <h5 class="font-bold text-lg text-slate-500 dark:text-slate-400 mb-3 uppercase tracking-widest">Detailní popis pro řemeslníka</h5>
+                            
+                            <p id="pop-popis" contenteditable="true" spellcheck="false" class="text-lg text-slate-700 dark:text-slate-300 leading-loose whitespace-pre-line hover:bg-slate-100 dark:hover:bg-slate-800/50 focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-remexo-500 rounded-xl px-4 py-3 -mx-4 transition-all cursor-text border border-transparent hover:border-slate-200 dark:hover:border-slate-700">...</p>
+                            
+                            <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-700 text-center flex flex-col items-center gap-6">
+                                <div>
+                                    <p class="text-remexo-600 dark:text-remexo-400 font-bold text-sm mb-2"><i class="fa-solid fa-pen-to-square"></i> Můžete kliknout do textu a poptávku ručně upravit.</p>
+                                    <p class="text-slate-500 dark:text-slate-400 italic text-sm">Díky jasným detailům dostanete ty nejlepší nabídky bez zbytečného dohadování.</p>
+                                </div>
+                                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+                                    <button type="button" onclick="openModal('modal-chystame-publikace')" class="w-full sm:w-auto bg-remexo-500 hover:bg-remexo-600 text-white px-10 py-4 rounded-full font-bold text-lg transition-transform duration-300 hover:scale-105 shadow-xl">Publikovat na Remexo</button>
+                                    <button type="button" id="poptavka-reset-btn" class="w-full sm:w-auto text-slate-500 dark:text-slate-400 hover:text-remexo-500 dark:hover:text-remexo-500 px-6 py-4 font-bold transition duration-300 underline">Vytvořit další poptávku</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button id="poptavka-btn" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-remexo-500 dark:hover:bg-remexo-500 hover:text-white font-black py-6 rounded-2xl text-xl transition-all duration-300 hover:scale-[1.02] shadow-xl mt-4">
-                        Analyzovat a vytvořit poptávku
-                    </button>
-                </div>
-
-                <div id="poptavka-chat-box" class="hidden flex flex-col gap-6 relative z-10">
-                    <div id="poptavka-chat-messages" class="flex flex-col gap-4 max-h-[500px] overflow-y-auto p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-inner"></div>
-                    <div id="poptavka-reply-area" class="flex gap-4 hidden mt-2">
-                        <input type="text" id="poptavka-reply-input" class="flex-grow bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-full pl-6 pr-4 py-4 text-slate-900 dark:text-white focus:ring-2 focus:ring-remexo-500 outline-none leading-relaxed text-lg shadow-sm" placeholder="Odpovězte asistentovi...">
-                        <button id="poptavka-reply-btn" class="bg-remexo-500 hover:bg-remexo-600 text-white px-8 py-4 rounded-full font-bold transition-transform hover:scale-105 shadow-md">Odeslat</button>
-                    </div>
-                </div>
-
-                <div id="poptavka-loading" class="hidden mt-12 text-center text-slate-500 dark:text-slate-400 relative z-10">
-                    <i class="fa-solid fa-microchip fa-spin text-4xl text-remexo-500 mb-6"></i>
-                    <p class="font-bold text-xl">Bořek analyzuje data...</p>
-                </div>
-
-                <div id="poptavka-result" class="hidden mt-12 pt-12 border-t border-slate-200 dark:border-slate-700 animate-in fade-in slide-in-from-bottom-5 relative z-10">
-                    <div id="poptavka-rada-box" class="mb-10 bg-remexo-50 dark:bg-remexo-500/10 border border-remexo-500 cta-highlight-box rounded-2xl p-6 shadow-sm hidden">
-                        <div class="flex items-start gap-4">
-                            <i class="fa-solid fa-lightbulb text-remexo-500 text-2xl mt-1"></i>
-                            <div>
-                                <h4 class="text-slate-900 dark:text-white font-extrabold mb-2 uppercase tracking-widest text-sm">Bořkova rychlá rada</h4>
-                                <p id="pop-rada" class="text-lg text-slate-800 dark:text-slate-200 leading-relaxed"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl shadow-sm"><i class="fa-solid fa-check"></i></div>
-                        <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">Dokonalá poptávka je na světě!</h3>
-                    </div>
-                    <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 shadow-sm relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-2 h-full bg-remexo-500"></div>
-                        <div class="flex flex-wrap gap-4 mb-6">
-                            <span id="pop-kategorie" class="bg-remexo-100 text-remexo-700 dark:bg-remexo-500/20 dark:text-remexo-400 px-4 py-2 rounded-full font-bold text-sm uppercase tracking-widest">Kategorie</span>
-                            <span id="pop-nalehavost" class="bg-red-100 text-red-600 dark:bg-red-500/20 dark:text-red-400 px-4 py-2 rounded-full font-bold text-sm uppercase tracking-widest">Naléhavost</span>
-                            <span id="pop-cena" class="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 px-4 py-2 rounded-full font-bold text-sm uppercase tracking-widest border border-slate-200 dark:border-slate-700">Cena</span>
-                        </div>
-                        
-                        <h4 id="pop-nazev" contenteditable="true" spellcheck="false" class="text-3xl font-extrabold mb-4 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800/50 focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-remexo-500 rounded-xl px-4 py-2 -mx-4 transition-all cursor-text border border-transparent hover:border-slate-200 dark:hover:border-slate-700">...</h4>
-                        
-                        <h5 class="font-bold text-lg text-slate-500 dark:text-slate-400 mb-3 uppercase tracking-widest">Detailní popis pro řemeslníka</h5>
-                        
-                        <p id="pop-popis" contenteditable="true" spellcheck="false" class="text-lg text-slate-700 dark:text-slate-300 leading-loose whitespace-pre-line hover:bg-slate-100 dark:hover:bg-slate-800/50 focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-remexo-500 rounded-xl px-4 py-3 -mx-4 transition-all cursor-text border border-transparent hover:border-slate-200 dark:hover:border-slate-700">...</p>
-                        
-                        <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-700 text-center flex flex-col items-center gap-6">
-                            <div>
-                                <p class="text-remexo-600 dark:text-remexo-400 font-bold text-sm mb-2"><i class="fa-solid fa-pen-to-square"></i> Můžete kliknout do textu a poptávku ručně upravit.</p>
-                                <p class="text-slate-500 dark:text-slate-400 italic text-sm">Díky jasným detailům dostanete ty nejlepší nabídky bez zbytečného dohadování.</p>
-                            </div>
-                            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
-                                <button type="button" onclick="openModal('modal-chystame-publikace')" class="w-full sm:w-auto bg-remexo-500 hover:bg-remexo-600 text-white px-10 py-4 rounded-full font-bold text-lg transition-transform duration-300 hover:scale-105 shadow-xl">Publikovat na Remexo</button>
-                                <button type="button" id="poptavka-reset-btn" class="w-full sm:w-auto text-slate-500 dark:text-slate-400 hover:text-remexo-500 dark:hover:text-remexo-500 px-6 py-4 font-bold transition duration-300 underline">Vytvořit další poptávku</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
- <section id="o-zakladateli" class="py-24 bg-white dark:bg-remexo-dark border-y border-slate-100 dark:border-slate-800">
-    <div class="max-w-5xl mx-auto px-4">
-        <div class="bg-white dark:bg-slate-800 rounded-[3rem] p-10 md:p-16 border border-slate-200 dark:border-slate-700 shadow-xl">
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+     <section id="o-zakladateli" class="py-24 bg-white dark:bg-remexo-dark border-y border-slate-100 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="bg-white dark:bg-slate-800 rounded-[3rem] p-10 md:p-16 border border-slate-200 dark:border-slate-700 shadow-xl">
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-                <div class="flex justify-center">
-                    <div class="w-72 h-72 rounded-[2.5rem] overflow-hidden border-4 border-remexo-500 shadow-2xl bg-remexo-50">
-                        <img src="/foto.jpeg" alt="David Štábl" class="w-full h-full object-cover">
+                    <!-- Foto -->
+                    <div class="flex justify-center">
+                        <div class="w-72 h-72 rounded-[2.5rem] overflow-hidden border-4 border-remexo-500 shadow-2xl bg-remexo-50">
+                            <img src="/foto.jpeg" alt="David Štábl" class="w-full h-full object-cover">
+                        </div>
                     </div>
-                </div>
-<div>
-    <p class="text-xs font-bold text-remexo-600 dark:text-remexo-500 uppercase tracking-widest mb-2">Kdo za Remexo stojí</p>
-    <h3 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-1 tracking-tight">David Štábl</h3>
-    <p class="text-slate-500 dark:text-slate-400 font-medium mb-6">Zakladatel · Kojetín</p>
+    <div>
+        <p class="text-xs font-bold text-remexo-600 dark:text-remexo-500 uppercase tracking-widest mb-2">Kdo za Remexo stojí</p>
+        <h3 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-1 tracking-tight">David Štábl</h3>
+        <p class="text-slate-500 dark:text-slate-400 font-medium mb-6">Zakladatel · Kojetín</p>
 
-    <blockquote class="border-l-4 border-remexo-500 pl-6 py-1 mb-8">
-        <p class="text-lg font-bold text-slate-800 dark:text-slate-200 leading-relaxed italic">
-            "Chci, aby každý v Brně mohl najít spolehlivého řemeslníka stejně snadno, jako si objedná rozvoz jídla."
+        <blockquote class="border-l-4 border-remexo-500 pl-6 py-1 mb-8">
+            <p class="text-lg font-bold text-slate-800 dark:text-slate-200 leading-relaxed italic">
+                "Chci, aby každý v Brně mohl najít spolehlivého řemeslníka stejně snadno, jako si objedná rozvoz jídla."
+            </p>
+        </blockquote>
+
+        <p class="text-lg text-slate-600 dark:text-slate-400 leading-loose mb-8">
+            Jsem student, který chce měnit a automatizovat zastaralé procesy.
         </p>
-    </blockquote>
 
-    <p class="text-lg text-slate-600 dark:text-slate-400 leading-loose mb-8">
-        Jsem student, který chce měnit a automatizovat zastaralé procesy.
-    </p>
-
-                    <div class="flex flex-wrap gap-3">
-                        <a href="https://www.linkedin.com/in/david-%C5%A1t%C3%A1bl-659871374/" target="_blank"
-                           class="inline-flex items-center gap-2 text-sm font-bold px-5 py-3 rounded-full border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-remexo-500 hover:text-remexo-600 transition">
-                            <i class="fa-brands fa-linkedin text-[#0A66C2]"></i> LinkedIn
-                        </a>
-                        <a href="https://www.instagram.com/david_stabl/" target="_blank"
-                           class="inline-flex items-center gap-2 text-sm font-bold px-5 py-3 rounded-full border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-remexo-500 hover:text-remexo-600 transition">
-                            <i class="fa-brands fa-instagram text-[#E4405F]"></i> Instagram
-                        </a>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="https://www.linkedin.com/in/david-%C5%A1t%C3%A1bl-659871374/" target="_blank"
+                               class="inline-flex items-center gap-2 text-sm font-bold px-5 py-3 rounded-full border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-remexo-500 hover:text-remexo-600 transition">
+                                <i class="fa-brands fa-linkedin text-[#0A66C2]"></i> LinkedIn
+                            </a>
+                            <a href="https://www.instagram.com/david_stabl/" target="_blank"
+                               class="inline-flex items-center gap-2 text-sm font-bold px-5 py-3 rounded-full border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-remexo-500 hover:text-remexo-600 transition">
+                                <i class="fa-brands fa-instagram text-[#E4405F]"></i> Instagram
+                            </a>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-        </div>
-    </div>
-</section>
-    <section id="newsletter" class="py-24 bg-slate-50 dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <div class="bg-white dark:bg-slate-800 p-8 md:p-16 rounded-[3rem] border border-slate-200 dark:border-slate-700 shadow-xl">
-                <h2 class="text-3xl md:text-5xl font-extrabold mb-6 dark:text-white">Získejte přístup v Brně dříve</h2>
-                
-                <div class="flex justify-center mb-8">
-                    <span class="bg-green-100 text-green-700 border border-green-200 px-6 py-2 rounded-full font-bold text-sm tracking-widest uppercase shadow-sm">
-                        🎁 První poptávka zcela zdarma
-                    </span>
-                </div>
-
-                <div id="subscriber-count" class="inline-flex items-center gap-3 bg-remexo-50 dark:bg-remexo-500/10 border border-remexo-500/30 px-6 py-3 rounded-full mb-8">
-                    <div class="flex -space-x-2">
-                        <div class="w-8 h-8 rounded-full bg-remexo-500 flex items-center justify-center text-white text-xs font-bold">J</div>
-                        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs font-bold">M</div>
-                        <div class="w-8 h-8 rounded-full bg-remexo-600 flex items-center justify-center text-white text-xs font-bold">P</div>
-                    </div>
-                    <p class="text-slate-700 dark:text-slate-300 font-bold text-sm">Už <span id="count-number" class="text-remexo-500 text-lg">...</span> lidí čeká na přístup</p>
-                </div>
-                <p class="text-slate-600 dark:text-slate-400 text-xl mb-12 max-w-xl mx-auto leading-loose">
-                    Zanechte nám svůj e-mail a my vás budeme informovat, jakmile v červnu 2026 spustíme brněnský provoz. O nic nepřijdete a první zadání máte na nás!
-                </p>
-                <div id="newsletter-area">
-                    <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-                        <input type="email" name="email" id="newsletter-email" required placeholder="Váš e-mail" class="flex-grow pl-8 pr-6 py-5 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-remexo-dark dark:text-white focus:ring-2 focus:ring-remexo-500 outline-none transition text-lg">
-                        <button type="submit" id="newsletter-btn" class="bg-remexo-dark dark:bg-remexo-500 hover:bg-slate-800 dark:hover:bg-remexo-600 text-white px-10 py-5 rounded-full font-bold transition-transform duration-300 hover:scale-105 shadow-lg whitespace-nowrap text-lg">Chci přístup</button>
-                    </form>
-                    <div id="error-msg" class="hidden mt-8 p-6 bg-red-50 dark:bg-red-500/10 border border-red-500/20 rounded-2xl text-left">
-                        <p class="font-bold text-red-700 dark:text-red-400 mb-3 text-lg">Něco se pokazilo.</p>
-                        <p class="text-base text-red-600 dark:text-red-300 leading-loose">Zkuste to prosím za okamžik znovu, nebo nám napište na e-mail: <br> <a href="mailto:remexocz@seznam.cz" class="font-bold underline">remexocz@seznam.cz</a>.</p>
-                    </div>
-                </div>
-                <div id="newsletter-success" class="hidden text-center p-8 bg-remexo-50 dark:bg-remexo-500/10 rounded-3xl border border-remexo-500/20 mt-8">
-                    <div class="w-20 h-20 bg-remexo-500 rounded-full flex items-center justify-center text-white mx-auto mb-6"><i class="fa-solid fa-check text-3xl"></i></div>
-                    <h3 class="text-3xl font-extrabold mb-4 text-remexo-700 dark:text-remexo-500">Vaše místo je zajištěno!</h3>
-                    <p class="text-slate-600 dark:text-slate-300 text-lg leading-loose">Děkujeme, váš e-mail jsme bezpečně uložili. Brzy se vám ozveme s novinkami!</p>
                 </div>
             </div>
         </div>
     </section>
+        <section id="newsletter" class="py-24 bg-slate-50 dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <div class="bg-white dark:bg-slate-800 p-8 md:p-16 rounded-[3rem] border border-slate-200 dark:border-slate-700 shadow-xl">
+                    <h2 class="text-3xl md:text-5xl font-extrabold mb-6 dark:text-white">Získejte přístup v Brně dříve</h2>
+                    
+                    <div class="flex justify-center mb-8">
+                        <span class="bg-green-100 text-green-700 border border-green-200 px-6 py-2 rounded-full font-bold text-sm tracking-widest uppercase shadow-sm">
+                            🎁 První poptávka zcela zdarma
+                        </span>
+                    </div>
 
-    <section id="faq" class="py-24 bg-white dark:bg-remexo-dark border-y border-slate-100 dark:border-slate-800">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-4xl font-extrabold mb-16 dark:text-white text-left">Často kladené dotazy</h2>
-            <div class="space-y-8">
-                <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm transition hover:shadow-md">
-                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Proč Brno a červen 2026?</h3>
-                    <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Brno je technologické srdce Česka. Právě zde chceme v červnu 2026 ukázat, že řemeslo se dá dělat moderně, bezpečně a plně digitálně s pomocí naší aplikace.</p>
-                </div>
-                <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition hover:shadow-md">
-                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Jak se pozná ověřený řemeslník?</h3>
-                    <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Každý Bořkův parťák prochází pečlivou kontrolou identity skrze IČO a verifikací osobních dokumentů. Bezpečnost a kvalita je u nás na prvním místě.</p>
-                </div>
-                <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition hover:shadow-md">
-                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Kolik mě bude platforma stát?</h3>
-                    <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Zadání problému a výběr z nabídek od ověřených profesionálů vás nic nestojí. Náš model je naprosto transparentní – z každé zakázky je účtován 10% poplatek za garanci a ochranu vaší platby, která se uvolní až po dokončení práce. Samotní řemeslníci pak za využívání platformy a stabilní přísun zakázek platí měsíční předplatné.</p>
-                </div>
-                <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition hover:shadow-md">
-                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Co když se oprava nepovede?</h3>
-                    <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Vaše peníze držíme v bezpečné úschově (Escrow) a řemeslníkovi je uvolníme až po vašem odsouhlasení, že je vše v pořádku. Navíc jsou všechny zakázky realizované přes Remexo pojištěné proti způsobené škodě.</p>
-                </div>
-                <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition hover:shadow-md">
-                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Jak dlouho budu čekat na nabídky?</h3>
-                    <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Díky tomu, že AI vytvoří okamžitě přesné zadání a rozešle notifikace profíkům ve vašem okolí, první relevantní nabídky s jasnou cenou a termínem dostáváte obvykle už v řádu desítek minut.</p>
-                </div>
-                <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition hover:shadow-md">
-                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Můžu Remexo využít na velkou rekonstrukci?</h3>
-                    <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Platforma Remexo je v první fázi specializována čistě na drobné domácí opravy, instalace a rychlou údržbu. Kompletní rekonstrukce zatím nezprostředkováváme.</p>
+                    <div id="subscriber-count" class="inline-flex items-center gap-3 bg-remexo-50 dark:bg-remexo-500/10 border border-remexo-500/30 px-6 py-3 rounded-full mb-8">
+                        <div class="flex -space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-remexo-500 flex items-center justify-center text-white text-xs font-bold">J</div>
+                            <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs font-bold">M</div>
+                            <div class="w-8 h-8 rounded-full bg-remexo-600 flex items-center justify-center text-white text-xs font-bold">P</div>
+                        </div>
+                        <p class="text-slate-700 dark:text-slate-300 font-bold text-sm">Už <span id="count-number" class="text-remexo-500 text-lg">...</span> lidí čeká na přístup</p>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 text-xl mb-12 max-w-xl mx-auto leading-loose">
+                        Zanechte nám svůj e-mail a my vás budeme informovat, jakmile v červnu 2026 spustíme brněnský provoz. O nic nepřijdete a první zadání máte na nás!
+                    </p>
+                    <div id="newsletter-area">
+                        <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                            <input type="email" name="email" id="newsletter-email" required placeholder="Váš e-mail" class="flex-grow pl-8 pr-6 py-5 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-remexo-dark dark:text-white focus:ring-2 focus:ring-remexo-500 outline-none transition text-lg">
+                            <button type="submit" id="newsletter-btn" class="bg-remexo-dark dark:bg-remexo-500 hover:bg-slate-800 dark:hover:bg-remexo-600 text-white px-10 py-5 rounded-full font-bold transition-transform duration-300 hover:scale-105 shadow-lg whitespace-nowrap text-lg">Chci přístup</button>
+                        </form>
+                        <div id="error-msg" class="hidden mt-8 p-6 bg-red-50 dark:bg-red-500/10 border border-red-500/20 rounded-2xl text-left">
+                            <p class="font-bold text-red-700 dark:text-red-400 mb-3 text-lg">Něco se pokazilo.</p>
+                            <p class="text-base text-red-600 dark:text-red-300 leading-loose">Zkuste to prosím za okamžik znovu, nebo nám napište na e-mail: <br> <a href="mailto:remexocz@seznam.cz" class="font-bold underline">remexocz@seznam.cz</a>.</p>
+                        </div>
+                    </div>
+                    <div id="newsletter-success" class="hidden text-center p-8 bg-remexo-50 dark:bg-remexo-500/10 rounded-3xl border border-remexo-500/20 mt-8">
+                        <div class="w-20 h-20 bg-remexo-500 rounded-full flex items-center justify-center text-white mx-auto mb-6"><i class="fa-solid fa-check text-3xl"></i></div>
+                        <h3 class="text-3xl font-extrabold mb-4 text-remexo-700 dark:text-remexo-500">Vaše místo je zajištěno!</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-lg leading-loose">Děkujeme, váš e-mail jsme bezpečně uložili. Brzy se vám ozveme s novinkami!</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <section id="faq" class="py-24 bg-white dark:bg-remexo-dark border-y border-slate-100 dark:border-slate-800">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-4xl font-extrabold mb-16 dark:text-white text-left">Často kladené dotazy</h2>
+                <div class="space-y-8">
+                    <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm transition hover:shadow-md">
+                        <h3 class="text-2xl font-bold mb-4 dark:text-white">Proč Brno a červen 2026?</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Brno je technologické srdce Česka. Právě zde chceme v červnu 2026 ukázat, že řemeslo se dá dělat moderně, bezpečně a plně digitálně s pomocí naší aplikace.</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition hover:shadow-md">
+                        <h3 class="text-2xl font-bold mb-4 dark:text-white">Jak se pozná ověřený řemeslník?</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Každý Bořkův parťák prochází pečlivou kontrolou identity skrze IČO a verifikací osobních dokumentů. Bezpečnost a kvalita je u nás na prvním místě.</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition hover:shadow-md">
+                        <h3 class="text-2xl font-bold mb-4 dark:text-white">Kolik mě bude platforma stát?</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Zadání problému a výběr z nabídek od ověřených profesionálů vás nic nestojí. Náš model je naprosto transparentní – z každé zakázky je účtován 10% poplatek za garanci a ochranu vaší platby, která se uvolní až po dokončení práce. Samotní řemeslníci pak za využívání platformy a stabilní přísun zakázek platí měsíční předplatné.</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition hover:shadow-md">
+                        <h3 class="text-2xl font-bold mb-4 dark:text-white">Co když se oprava nepovede?</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Vaše peníze držíme v bezpečné úschově (Escrow) a řemeslníkovi je uvolníme až po vašem odsouhlasení, že je vše v pořádku. Navíc jsou všechny zakázky realizované přes Remexo pojištěné proti způsobené škodě.</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition hover:shadow-md">
+                        <h3 class="text-2xl font-bold mb-4 dark:text-white">Jak dlouho budu čekat na nabídky?</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Díky tomu, že AI vytvoří okamžitě přesné zadání a rozešle notifikace profíkům ve vašem okolí, první relevantní nabídky s jasnou cenou a termínem dostáváte obvykle už v řádu desítek minut.</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-900 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm transition hover:shadow-md">
+                        <h3 class="text-2xl font-bold mb-4 dark:text-white">Můžu Remexo využít na velkou rekonstrukci?</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-loose text-lg">Platforma Remexo je v první fázi specializována čistě na drobné domácí opravy, instalace a rychlou údržbu. Kompletní rekonstrukce zatím nezprostředkováváme.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- KONEC BÍLÉHO OBALU -->
+
+    <!-- PATIČKA -->
     <footer id="kontakt" class="bg-remexo-dark text-white border-t border-white/5">
         <div class="w-full h-64 relative overflow-hidden">
             <iframe
@@ -575,6 +582,7 @@
         </div>
     </footer>
 
+    <!-- MODÁLNÍ OKNA A VYSKAKOVACÍ PRVKY -->
     <div id="modal-chystame" class="modal-overlay" role="dialog" aria-modal="true">
         <div class="modal-box text-center">
             <button onclick="closeModal('modal-chystame')" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300 transition">
