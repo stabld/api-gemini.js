@@ -377,7 +377,6 @@
         <div class="bg-white dark:bg-slate-800 rounded-[3rem] p-10 md:p-16 border border-slate-200 dark:border-slate-700 shadow-xl">
             <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-                <!-- Foto -->
                 <div class="flex justify-center">
                     <div class="w-72 h-72 rounded-[2.5rem] overflow-hidden border-4 border-remexo-500 shadow-2xl bg-remexo-50">
                         <img src="/foto.jpeg" alt="David Štábl" class="w-full h-full object-cover">
@@ -839,6 +838,11 @@
             }
         }, 7000); 
 
+        // --- BEZPEČNÉ REGULÁRNÍ VÝRAZY ---
+        const cleanRegex = new RegExp('[*\\u2728\\u2B50]', 'g');
+        const jsonRegex = new RegExp('\`\`\`json', 'gi');
+        const tickRegex = new RegExp('\`\`\`', 'g');
+
         // --- API ---
         async function callGeminiAPI(parts, systemPrompt, useJson = false) {
             const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' || window.location.protocol === 'file:';
@@ -883,10 +887,11 @@
             if (!text) return;
             appendMessage('user', text);
             inputEl.value = '';
+            
             const systemPrompt = "Jsi Bořek, asistent platformy Remexo. Odpovídej stručně. ZÁSADNÍ: Odpovídej POUZE na základě faktů (Platforma pro drobné opravy, Escrow, KYC ověření, start 06/2026 Brno). Pokud uživatel popisuje problém, doporuč Remexo.";
             try {
                 const responseText = await callGeminiAPI([{ text: text }], systemPrompt, false);
-                appendMessage('borek', responseText.replace(/[\*✨⭐]/g, '').trim());
+                appendMessage('borek', responseText.replace(cleanRegex, '').trim());
             } catch (e) {
                 appendMessage('borek', `⚠️ Jejda, něco se pokazilo: ${e.message}`);
             }
@@ -940,34 +945,37 @@
             if (btnReply) btnReply.disabled = true;
             loading.classList.remove('hidden');
             replyArea.classList.add('hidden');
-            const systemPrompt = `Jsi Bořek, profesionální technik. Vytvoř zadání pro řemeslníka.
-ODPOVÍDEJ PŘESNĚ V TOMTO JSON FORMÁTU BEZ DALŠÍHO TEXTU KOLEM:
-Pokud se ptáš na detaily: {"status": "question", "message": "tvoje otázka"}
-Pokud máš vše: {"status": "done", "nazev": "titulek", "kategorie": "obor", "popis": "detailní popis", "nalehavost": "Vysoká/Střední/Nízká", "odhad_ceny": "cena Kč", "rada": "krátká rada"}`;
+            
+            const systemPrompt = "Jsi Bořek, profesionální technik. Vytvoř zadání pro řemeslníka.\n" +
+                                 "ODPOVÍDEJ PŘESNĚ V TOMTO JSON FORMÁTU BEZ DALŠÍHO TEXTU KOLEM:\n" +
+                                 "Pokud se ptáš na detaily: {\"status\": \"question\", \"message\": \"tvoje otázka\"}\n" +
+                                 "Pokud máš vše: {\"status\": \"done\", \"nazev\": \"titulek\", \"kategorie\": \"obor\", \"popis\": \"detailní popis\", \"nalehavost\": \"Vysoká/Střední/Nízká\", \"odhad_ceny\": \"cena Kč\", \"rada\": \"krátká rada\"}";
+            
             let parts = [{ text: userInputText }];
             if (currentBase64Image && currentMimeType) {
                 parts.push({ inlineData: { mimeType: currentMimeType, data: currentBase64Image } });
             }
             try {
                 const responseText = await callGeminiAPI(parts, systemPrompt, true);
-                let cleanText = responseText.replace(/```json/gi, '').replace(/
-```/g, '').trim();
+                let cleanText = responseText.replace(jsonRegex, '').replace(tickRegex, '').trim();
+                
                 if (cleanText.indexOf('{') !== -1 && cleanText.lastIndexOf('}') !== -1) {
                     cleanText = cleanText.substring(cleanText.indexOf('{'), cleanText.lastIndexOf('}') + 1);
                 }
                 const data = JSON.parse(cleanText);
                 loading.classList.add('hidden');
+                
                 if (data.status === "question") {
-                    appendPoptavkaChat('ai', data.message.replace(/[\*✨⭐]/g, ''));
+                    appendPoptavkaChat('ai', data.message.replace(cleanRegex, ''));
                     replyArea.classList.remove('hidden');
                 } else if (data.status === "done") {
-                    document.getElementById('pop-nazev').innerText = data.nazev.replace(/[\*✨⭐]/g, '');
-                    document.getElementById('pop-kategorie').innerText = data.kategorie.replace(/[\*✨⭐]/g, '');
-                    document.getElementById('pop-popis').innerText = data.popis.replace(/[\*✨⭐]/g, '');
-                    document.getElementById('pop-nalehavost').innerText = data.nalehavost.replace(/[\*✨⭐]/g, '');
-                    document.getElementById('pop-cena').innerText = data.odhad_ceny.replace(/[\*✨⭐]/g, '');
+                    document.getElementById('pop-nazev').innerText = data.nazev.replace(cleanRegex, '');
+                    document.getElementById('pop-kategorie').innerText = data.kategorie.replace(cleanRegex, '');
+                    document.getElementById('pop-popis').innerText = data.popis.replace(cleanRegex, '');
+                    document.getElementById('pop-nalehavost').innerText = data.nalehavost.replace(cleanRegex, '');
+                    document.getElementById('pop-cena').innerText = data.odhad_ceny.replace(cleanRegex, '');
                     if (data.rada && data.rada.trim()) {
-                        document.getElementById('pop-rada').innerText = data.rada.replace(/[\*✨⭐]/g, '');
+                        document.getElementById('pop-rada').innerText = data.rada.replace(cleanRegex, '');
                         document.getElementById('poptavka-rada-box').classList.remove('hidden');
                     }
                     resultArea.classList.remove('hidden');
